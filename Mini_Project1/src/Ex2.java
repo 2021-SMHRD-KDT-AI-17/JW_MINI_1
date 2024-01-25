@@ -5,5 +5,5 @@ public class Ex2 {
 		int result = num1+ num2;
 		return result;
 	}
-		
+
 }
