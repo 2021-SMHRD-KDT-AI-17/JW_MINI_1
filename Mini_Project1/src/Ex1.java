@@ -5,7 +5,7 @@ public class Ex1 {
 
 		int num1=1;
 		int num2=1;
-		Sum sm = new Sum();
+//		Sum sm = new Sum();
 		
 		
 		System.out.println(sm.Sum(num1,num2));
