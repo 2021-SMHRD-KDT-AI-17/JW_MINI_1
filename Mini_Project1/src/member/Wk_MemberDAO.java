@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class Wk_MemberDAO {
+	
 
 	Connection conn = null;
 	PreparedStatement psmt = null;
@@ -21,7 +22,7 @@ public class Wk_MemberDAO {
 			String user = "campus_23K_AI17_p1_4"; 
 			String password = "smhrd4"; 
 			conn = DriverManager.getConnection(url, user, password); 
-			if (conn != null) {System.out.println("DB연결 성공");
+			if (conn != null) {System.out.println("\t \t \t \t \t \t \t \t \t DB연결 성공");
 			} else {System.out.println("DB연결실패");	}
 		} catch (Exception e) {	e.printStackTrace();}
 	}//getConn()
@@ -35,19 +36,37 @@ public class Wk_MemberDAO {
 			if (conn != null) {
 				conn.close();}
 		} catch (Exception e) {e.printStackTrace();	}
-		System.out.println("디비Close.");
+		System.out.println("\t \t \t \t \t \t \t \t \t 디비Close.");
 	}//closd()
 
 //============================= 로  그  인====================================	
 
-	public void wkLogin() {
+	public void wkLogin(Wk_MemberDTO mdto) {
+			
 		try {
+			
+			String sql="select id from worker where id=? and pw=?";
+//test쿼리	String sql="select id from worker where id='김하영5' and pw='하영12'";
 			getConn();
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, mdto.getId());
+			psmt.setString(2, mdto.getPw());
+			rs=psmt.executeQuery();
+			//아이디,비밀번호 받아오고 
+			//로그인 성공시 ture 리턴 
+			// OR  ,play테이블에서 머니,정보 가져와서 넘겨주기 
+			if(rs.next()) {
+				System.out.println("로그인 성공");
+			}else {
+				System.out.println("로그인 실패");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			closd();
 		}
+		
+		
 	}//wkLogin
 
 //============================= 가 입 ====================================	
@@ -79,11 +98,7 @@ public class Wk_MemberDAO {
 		try {
 			closd();
 
-			if (conn != null) {
-				System.out.println("DB연결 성공");
-			} else {
-				System.out.println("DB연결실패");
-			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -98,11 +113,7 @@ public class Wk_MemberDAO {
 		try {
 			getConn();
 
-			if (conn != null) {
-				System.out.println("DB연결 성공");
-			} else {
-				System.out.println("DB연결실패");
-			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -117,19 +128,14 @@ public class Wk_MemberDAO {
 		try {
 			getConn();
 
-			if (conn != null) {
-				System.out.println("DB연결 성공");
-			} else {
-				System.out.println("DB연결실패");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closd();
-		}
+			
+			
+
+		} catch (Exception e) {e.printStackTrace();
+		} finally {closd();	}
 	}
 // ==========================회원 리스트=====================================
-
+// - 메서드 호출시 아이디 이름 날짜 리턴
 	public ArrayList<Wk_MemberDTO> workerList() {
 		Wk_MemberDTO result=null;
 		ArrayList<Wk_MemberDTO> listDTO= new ArrayList<>();
@@ -153,5 +159,32 @@ public class Wk_MemberDAO {
 	}finally {closd();}
 	return listDTO;
 	}//workerList()
+	
+	// ==========================회원 리스트=====================================
+	// - 메서드 호출시 true= 중복 false=중복없음
+		public boolean checkId(String joinId) {
+			
+			try {
+		        getConn();
+		        String sql = "SELECT COUNT(*) FROM worker WHERE id=?";
+		        psmt = conn.prepareStatement(sql);
+		        psmt.setString(1, joinId);
+		        rs = psmt.executeQuery();
+
+		        if (rs.next()) {
+		            int count = rs.getInt(1);
+		            if (count > 0) {
+		                System.out.println("좀더 멋진 이름을 지어오게나 (중복)");
+		                return true;
+		            } else {
+		                System.out.println("자네 이름이 좋군, 눈빛이 마음에 들어..");
+		                return false;
+		            }
+		        }
+		}catch(Exception e){e.printStackTrace();
+		}finally {closd();}
+
+			return false;
+		}//workerList()
 
 }// 클레스 끝
