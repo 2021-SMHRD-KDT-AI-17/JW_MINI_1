@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 import member.Wk_MemberDAO;
 import member.Wk_MemberDTO;
+import play.GoTohomeDAO;
+
 
 public class main_print {
 
@@ -61,13 +63,7 @@ public class main_print {
 		String checkId=sc.nextLine();
 		mdao.checkId(checkId);
 		// checkId() 메서드 호출시 true= 중복 false=중복없음
-		
-		
-		
-		
-		
-		
-		
+	
 		
 		
 		

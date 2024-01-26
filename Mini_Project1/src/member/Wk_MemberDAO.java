@@ -74,11 +74,20 @@ public class Wk_MemberDAO {
 		int cnt = 0;
 		try {
 			getConn();
-			String sql = "insert into worker(id,pw,name) values(?,?,?)";
-			psmt = conn.prepareStatement(sql);
+			String sql1 = "insert into worker(id,pw,name) values(?,?,?)";
+			String sql2 = "insert into worker_mohp(id,hp,money,cnt_date) values(?,?,?,?)";
+			
+			psmt = conn.prepareStatement(sql1);
 			psmt.setString(1, dto.getId());
 			psmt.setString(2, dto.getPw());
 			psmt.setString(3, dto.getName());
+			
+			psmt = conn.prepareStatement(sql2); // 가입시 hp = 100, money = 0, 일한날짜 = 0 으로 초기세팅
+			psmt.setString(1, dto.getId());
+			psmt.setInt(2, 100);
+			psmt.setInt(3, 0);
+			psmt.setInt(4, 0);
+			
 			cnt=psmt.executeUpdate();
 			if (cnt > 0) {
 				System.out.println("취업 성공. 당장 출근하세요 !");
