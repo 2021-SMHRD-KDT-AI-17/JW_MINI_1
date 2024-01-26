@@ -1,6 +1,6 @@
 package play;
 
-public class Work {
+public class WorkDAO {
 
 
 	

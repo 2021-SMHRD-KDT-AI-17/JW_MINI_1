@@ -1,6 +1,6 @@
 package play;
 
-public class Rest {
+public class RestDAO {
 
 
 

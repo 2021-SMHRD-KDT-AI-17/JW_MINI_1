@@ -1,6 +1,6 @@
 package play;
 
-public class Rank {
+public class RankDAO {
 
 	
 	
