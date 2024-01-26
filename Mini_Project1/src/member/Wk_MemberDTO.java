@@ -8,7 +8,7 @@ public class Wk_MemberDTO {
 	private String date;//가입날짜
 	
 	
-	Wk_MemberDTO(){}
+	public Wk_MemberDTO(){}
 
 
 	public String getId() {
