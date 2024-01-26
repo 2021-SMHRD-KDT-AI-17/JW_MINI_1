@@ -3,7 +3,7 @@ package member;
 public class Wk_MemberDTO {
 
 	private String id;//아이디
-	private int pw;//비번
+	private String pw;
 	private String Nick;//닉네임
 	private String date;//가입날짜
 	
@@ -21,12 +21,12 @@ public class Wk_MemberDTO {
 	}
 
 
-	public int getPw() {
+	public String getPw() {
 		return pw;
 	}
 
 
-	public void setPw(int pw) {
+	public void setPw(String pw) {
 		this.pw = pw;
 	}
 

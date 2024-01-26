@@ -12,16 +12,9 @@ public class Wk_MemberDAO {
 	ResultSet wk_rs = null; 
 	
 	
+//=========================================================================================	
+			
 	public void wk_getConn(){
-		
-		
-		//ojdbc 경로 
-		//URI
-		//계정 ID
-		//계정 비번
-		
-
-		
 		try {
 			//  [Java 프로그램과 데이터베이스를 연결하는과정] -> JDBC
 			Class.forName("oracle.jdbc.driver.OracleDriver");			 // try문에 들어와야하는구만		
@@ -37,24 +30,21 @@ public class Wk_MemberDAO {
 			// - Connection객체 : DB연결,종료,SQL실행 등의 기능을 제공하는 객체 
 			
 			wk_conn = DriverManager.getConnection(url, user, password); // db연결주소 ,계정정보 
-			
 			// getConnection 연결시 또 예외처리를 해야하므로 try/catch 안에 또 t/c 넣기보다는 catch 문만 추가
 
-	
-		
+			
 			if(wk_conn != null) {
 				System.out.println("DB연결 성공");
 			}else {
 				System.out.println("DB연결실패");
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
-
 	
+	//=========================================================================================	
+			
 	public void wk_db_closd() {
 
 		try {
@@ -67,6 +57,8 @@ public class Wk_MemberDAO {
 		}
 		System.out.println("디비Close.");
 	}
+	
+//=========================================================================================	
 	
 	
 	public void wokerLogin(){
