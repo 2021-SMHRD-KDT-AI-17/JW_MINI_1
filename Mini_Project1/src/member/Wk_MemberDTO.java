@@ -4,8 +4,8 @@ public class Wk_MemberDTO {
 
 	private String id;//아이디
 	private String pw;
-	private String Nick;//닉네임
-	private String date;//가입날짜
+	private String name;//닉네임
+	private String inDate;//가입날짜
 	
 	
 	public Wk_MemberDTO(){}
@@ -31,23 +31,23 @@ public class Wk_MemberDTO {
 	}
 
 
-	public String getNick() {
-		return Nick;
+	public String getName() {
+		return name;
 	}
 
 
-	public void setNick(String nick) {
-		Nick = nick;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 
-	public String getDate() {
-		return date;
+	public String getInDate() {
+		return inDate;
 	}
 
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setInDate(String inDate) {
+		this.inDate = inDate;
 	}
 
 	
