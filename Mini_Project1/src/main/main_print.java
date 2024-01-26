@@ -45,7 +45,7 @@ public class main_print {
 		
 //		=========================================		
 		
-		//로그인
+		//로그인 - 로그인시 play쪽에서 아이디 전달 받을 메소드 필요
 
 //		System.out.print("아이디 입력 : ");
 //		String logId=sc.nextLine();
