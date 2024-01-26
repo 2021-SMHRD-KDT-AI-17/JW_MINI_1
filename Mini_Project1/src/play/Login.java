@@ -1,6 +1,6 @@
 package play;
 
-public class login {
+public class Login {
 
 	
 }

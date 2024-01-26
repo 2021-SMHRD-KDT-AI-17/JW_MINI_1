@@ -1,6 +1,6 @@
 package play;
 
-public class work {
+public class Work {
 
 
 	

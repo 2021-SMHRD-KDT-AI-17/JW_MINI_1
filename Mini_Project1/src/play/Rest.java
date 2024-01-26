@@ -1,6 +1,6 @@
 package play;
 
-public class rest {
+public class Rest {
 
 
 

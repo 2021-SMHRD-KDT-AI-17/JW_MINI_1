@@ -1,6 +1,6 @@
 package play;
 
-public class rank {
+public class Rank {
 
 	
 	
