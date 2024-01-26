@@ -8,7 +8,9 @@ public class Ex1 {
 //		Sum sm = new Sum();
 		
 		
-		System.out.println(sm.Sum(num1,num2));
+		System.out.println("test1111");
+		
+		
 	}
 
 }
