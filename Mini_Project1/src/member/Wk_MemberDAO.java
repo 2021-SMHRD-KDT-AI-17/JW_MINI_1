@@ -44,7 +44,8 @@ public class Wk_MemberDAO {
 
 //============================= 로  그  인====================================	
 
-	public PlayDTO wkLogin(Wk_MemberDTO mdto) {
+	public PlayDTO wkLogin(Wk_MemberDTO mdto,int login_Or_Update_Delete) {
+		//입력값이 1이면 로그인 2면 수정 3이면 삭제
 	    try {
 	        String sql = "SELECT w.id, wm.hp, wm.money, wm.cnt_date " +
 	                     "FROM worker w " +
@@ -56,14 +57,25 @@ public class Wk_MemberDAO {
 	        psmt.setString(2, mdto.getPw());
 	        rs = psmt.executeQuery();
 	        pdto= new PlayDTO();
+	        
+			if (rs.next()) {
+				if (login_Or_Update_Delete == 1) {
+					System.out.println("로그인 성공");
+					pdto.setId(rs.getString(1));
+					pdto.setHp(rs.getInt(2));
+					pdto.setMoney(rs.getInt(3));
+					pdto.setCnt_date(rs.getInt(4));
+				} else if (login_Or_Update_Delete == 2 || login_Or_Update_Delete == 3) {
+					System.out.println("정보확인 성공");
+					pdto.setId(mdto.getId());
 
-	        if (rs.next()) {
-	            System.out.println("로그인 성공");
-	            pdto.setId(rs.getString(1));
-	            pdto.setHp(rs.getInt(2));
-	            pdto.setMoney(rs.getInt(3));
-	            pdto.setCnt_date(rs.getInt(4));
-	        } else {System.out.println("로그인 실패");}
+				}
+			} else if (login_Or_Update_Delete == 1) {
+				System.out.println("로그인 실패");
+			} else if (login_Or_Update_Delete == 2 || login_Or_Update_Delete == 3) {
+				System.out.println("정보확인 실패");
+			}
+			
 	    } catch (Exception e) {e.printStackTrace();
 	    } finally {closd();}
 	    return pdto;
@@ -98,10 +110,26 @@ public class Wk_MemberDAO {
 	}// wokerJoin
 
 	
-//============================= 수 정 ====================================	
-	public void wokerUpdate() {
+//============================= 수 정 ====================================
+	
+	public void wokerUpdate(Wk_MemberDTO mdto) {
+		int cnt=0;
 		try {
-			closd();
+			String sql="update worker set pw=?,name=? where id=?";
+			getConn();
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, mdto.getPw());
+			psmt.setString(2, mdto.getName());
+			psmt.setString(3, mdto.getId());
+			cnt=psmt.executeUpdate();
+			
+			if(cnt>0) {
+				System.out.println("수정완료");
+			}else {
+				System.out.println("변경되지 않음");
+			}
+			
+
 		} catch (Exception e) {e.printStackTrace();
 		} finally {closd();}
 		
@@ -116,13 +144,10 @@ public class Wk_MemberDAO {
 		} finally {closd();
 		}
 	}
-
-
 //============================= 랭 킹 ====================================	
 	public void workerRank() {
 		try {
 			getConn();
-			
 			String sql="select id,money,cnt_date from worker_mohp where rownum <= 10 order by money desc";
 			psmt=conn.prepareStatement(sql);	
 			rs=psmt.executeQuery();
@@ -135,10 +160,7 @@ public class Wk_MemberDAO {
 				System.out.println("Money : "+rs.getInt(2));
 				System.out.println("근무일수 : "+rs.getString(3));
 				System.out.println();
-				
 			}
-			
-			
 		} catch (Exception e) {e.printStackTrace();
 		} finally {closd();	}
 	}

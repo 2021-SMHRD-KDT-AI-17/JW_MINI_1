@@ -10,9 +10,10 @@ public class main_윤옥산 {
 	public static void main(String[] args) {
 	
 	
-	Scanner sc= new Scanner(System.in);
-	Wk_MemberDAO mdao= new Wk_MemberDAO();
-	Wk_MemberDTO mdto= new Wk_MemberDTO();
+		Scanner sc= new Scanner(System.in);
+		Wk_MemberDAO mdao= new Wk_MemberDAO();
+		Wk_MemberDTO mdto= new Wk_MemberDTO();
+		PlayDTO pdto = new PlayDTO();
 
 ////	가입 테스트
 //	while(true) {
@@ -71,8 +72,35 @@ public class main_윤옥산 {
 //	-=-------------랭킹
 	System.out.println("");
 	mdao.workerRank();
+//	------------
+	System.out.println("회원수정");
 	
- 
+	 while(true){
+	System.out.print("아이디 입력 : ");
+	String logId=sc.nextLine();
+	mdto.setId(logId);
+	
+	System.out.print("비밀번호 입력 : ");
+	String logPw=sc.nextLine();
+	mdto.setPw(logPw);
+	pdto=mdao.wkLogin(mdto,2);
+	
+	if(pdto.getId()!=null) {
+		while(true) {
+			System.out.print("변경할 비번 :");
+			String changePw=sc.nextLine();
+			System.out.println("변경할 이름 :");
+			String changeName=sc.nextLine();
+			
+			mdto.setPw(changePw);
+			mdto.setName(changeName);
+			mdto.setId(mdto.getId());
+			mdao.wokerUpdate(mdto);
+			break;
+		}
+		break;
+		}
+	 }
  
  
 	}
