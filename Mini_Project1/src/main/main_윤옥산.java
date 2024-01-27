@@ -70,38 +70,76 @@ public class main_윤옥산 {
 //	}
 	
 //	-=-------------랭킹
-	System.out.println("");
-	mdao.workerRank();
-//	------------
-	System.out.println("회원수정");
-	
-	 while(true){
-	System.out.print("아이디 입력 : ");
-	String logId=sc.nextLine();
-	mdto.setId(logId);
-	
-	System.out.print("비밀번호 입력 : ");
-	String logPw=sc.nextLine();
-	mdto.setPw(logPw);
-	pdto=mdao.wkLogin(mdto,2);
-	
-	if(pdto.getId()!=null) {
-		while(true) {
-			System.out.print("변경할 비번 :");
-			String changePw=sc.nextLine();
-			System.out.println("변경할 이름 :");
-			String changeName=sc.nextLine();
+//	mdao.workerRank();
+//	------------회원수정
+//	System.out.println("회원수정");
+//	
+//	 while(true){
+//	System.out.print("아이디 입력 : ");
+//	String logId=sc.nextLine();
+//	mdto.setId(logId);
+//	
+//	System.out.print("비밀번호 입력 : ");
+//	String logPw=sc.nextLine();
+//	mdto.setPw(logPw);
+//	pdto=mdao.wkLogin(mdto,2);
+//	
+//	if(pdto.getId()!=null) {
+//		while(true) {
+//			System.out.print("변경할 비번 :");
+//			String changePw=sc.nextLine();
+//			System.out.println("변경할 이름 :");
+//			String changeName=sc.nextLine();
+//			
+//			mdto.setPw(changePw);
+//			mdto.setName(changeName);
+//			mdto.setId(mdto.getId());
+//			mdao.wokerUpdate(mdto);
+//			break;
+//		}
+//		break;
+//		}
+//	 }
+	 
+	 
+//	 회원삭제 
+		System.out.println("회원삭제");
+		 while(true){
+			System.out.println("삭제를 원하시면 계정정보 확인 해주시기 바랍니다.");
+			System.out.print("아이디 입력 : ");
+			String logId=sc.nextLine();
+			mdto.setId(logId);
 			
-			mdto.setPw(changePw);
-			mdto.setName(changeName);
-			mdto.setId(mdto.getId());
-			mdao.wokerUpdate(mdto);
+			System.out.print("비밀번호 입력 : ");
+			String logPw=sc.nextLine();
+			mdto.setPw(logPw);
+			pdto=mdao.wkLogin(mdto,3);
+			
+		if(pdto.getId()!=null) {
+			while(true) {
+				
+				System.out.println("퇴사를 원할경우 , 사직서를 제출 바랍니다.");
+				System.out.println("사직 사유 : ");
+				System.out.println("퇴사 하시겠습니까? [1]예 /[2] 아니요");
+				int num=sc.nextInt();
+				if(num==1) {
+					System.out.println("언제든 기회가 열려있습니다. GoodLuck ! ! ! ! ");
+				}else if(num==2){
+					System.out.println("그래 잘 생각했어 밖은 지옥이야  .. 오늘 소주한잔 하자고 ");
+				}else {
+					System.out.println("장난치지말고 자리에 가서 일해 ");
+				}
+				mdto.setId(mdto.getId());
+				mdao.workerDelete(mdto);
+				break;
+			}
 			break;
-		}
-		break;
-		}
-	 }
- 
+			}
+		 }
+		 
+		 
+		 
+		 
  
 	}
 }

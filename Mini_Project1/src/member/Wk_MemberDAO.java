@@ -137,12 +137,41 @@ public class Wk_MemberDAO {
 
 	
 //============================= 삭 제 ====================================	
-	public void workerDelete() {
-		try {
-			getConn();
-		} catch (Exception e) {e.printStackTrace();
-		} finally {closd();
-		}
+	public void workerDelete(Wk_MemberDTO mdto) {
+	    int cnt = 0;
+	    try {
+	        getConn();
+
+	        // 각 DELETE 문을 별도로 처리
+	        String deleteWorkerSQL = "DELETE FROM worker WHERE id=?";
+	        String deleteWorkerMohpSQL = "DELETE FROM worker_mohp WHERE id=?";
+
+	        
+	        // 첫 번째 DELETE 문 실행 fk 키 먼저 삭제 
+	        psmt = conn.prepareStatement(deleteWorkerMohpSQL);
+	        psmt.setString(1, mdto.getId());
+	        cnt = psmt.executeUpdate();
+
+	        // 두 번째 DELETE 문 실행
+	        if (cnt > 0) {  // 첫 번째 DELETE 문이 성공했을 때만 두 번째 DELETE 문 실행
+	            psmt = conn.prepareStatement(deleteWorkerSQL);
+	            psmt.setString(1, mdto.getId());
+	            cnt = psmt.executeUpdate();
+
+	            if (cnt > 0) {
+	                System.out.println("퇴사가 완료되었습니다.");
+	            } else {
+	                System.out.println("퇴사가 완료되지 않았습니다.2");
+	            }
+	        } else {
+	            System.out.println("퇴사가 완료되지 않았습니다.1");
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        closd();
+	    }
 	}
 //============================= 랭 킹 ====================================	
 	public void workerRank() {
