@@ -71,12 +71,15 @@ public class WorkDAO {
 					
 					// sql 문 적기!!
 					
-					String sql = "update worker_mohp set hp = hp-20, money = money+30 where id = ?";
+					String sql = "update WORKER_MoHp set hp = (select hp from worker_MoHp where id = ?)-20, "
+						     + "money = (select money from worker_MoHp where id = ?) + 20 "
+						     + "where id = ? ";
 					
 					conn.prepareStatement(sql); //sql 넘겨주기!
 					
 					psmt.setString(1, dto.getId()); // -->  ?  채우기!
-					
+					psmt.setString(2, dto.getId());
+					psmt.setString(3, dto.getId());
 					
 					cnt = psmt.executeUpdate(); //--> 리턴 받아야하는게 cnt!!
 					
@@ -101,12 +104,15 @@ public class WorkDAO {
 					
 					// sql 문 적기!!
 					
-					String sql = "update worker_mohp set hp = hp-10, money = money-10 where id = ?";
+					String sql = "update WORKER_MoHp set hp = (select hp from worker_MoHp where id = ?)-10, "
+							     + "money = (select money from worker_MoHp where id = ?) - 10 "
+							     + "where id = ? ";
 					
 					conn.prepareStatement(sql); //sql 넘겨주기!
 					
 					psmt.setString(1, dto.getId()); // -->  ?  채우기!
-					
+					psmt.setString(2, dto.getId());
+					psmt.setString(3, dto.getId());
 					
 					cnt = psmt.executeUpdate(); //--> 리턴 받아야하는게 cnt!!
 					
@@ -132,12 +138,13 @@ public class WorkDAO {
 					
 					// sql 문 적기!!
 					
-					String sql = "update worker_mohp set hp = hp-30 where id = ?";
+					String sql = "update WORKER_MoHp set hp = (select hp from worker_MoHp where id = ?)-20 "
+						     + "where id = ? ";
 					
 					conn.prepareStatement(sql); //sql 넘겨주기!
 					
 					psmt.setString(1, dto.getId()); // -->  ?  채우기!
-					
+					psmt.setString(2, dto.getId());
 					
 					cnt = psmt.executeUpdate(); //--> 리턴 받아야하는게 cnt!!
 					
@@ -163,12 +170,13 @@ public class WorkDAO {
 					
 					// sql 문 적기!!
 					
-					String sql = "update worker_mohp set money = money+20 where id = ?";
+					String sql = "update WORKER_MoHp set money = (select hp from worker_MoHp where id = ?)+15 "
+						     + "where id = ? ";
 					
 					conn.prepareStatement(sql); //sql 넘겨주기!
 					
 					psmt.setString(1, dto.getId()); // -->  ?  채우기!
-					
+					psmt.setString(2, dto.getId());
 					
 					cnt = psmt.executeUpdate(); //--> 리턴 받아야하는게 cnt!!
 					
