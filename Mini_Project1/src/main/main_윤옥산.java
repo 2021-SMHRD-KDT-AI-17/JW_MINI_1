@@ -49,6 +49,8 @@ public class main_윤옥산 {
 //	=========================================		
 	
 	//로그인 - 로그인시 play쪽에서 아이디 전달 받을 메소드 필요
+	
+	
  while(true){
 	System.out.print("아이디 입력 : ");
 	String logId=sc.nextLine();
@@ -65,6 +67,8 @@ public class main_윤옥산 {
 	System.out.println(pdto.getCnt_date());
 	break;
 	}
+	
+	
  }
  
  
