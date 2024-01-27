@@ -83,6 +83,10 @@ public class WorkDAO {
 					
 					cnt = psmt.executeUpdate(); //--> 리턴 받아야하는게 cnt!!
 					
+					if(cnt>0) {
+						System.out.println("HP가 -20 감소하고, money가 +20 증가 하였습니다!!!");
+					}
+					
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -116,6 +120,10 @@ public class WorkDAO {
 					
 					cnt = psmt.executeUpdate(); //--> 리턴 받아야하는게 cnt!!
 					
+					if(cnt>0) {
+						System.out.println("HP가 -10 감소하고, money가 -10 감소 하였습니다!!!");
+					}
+					
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -148,6 +156,10 @@ public class WorkDAO {
 					
 					cnt = psmt.executeUpdate(); //--> 리턴 받아야하는게 cnt!!
 					
+					if(cnt>0) {
+						System.out.println("HP가 -20 감소 했습니다!!!!!");
+					}
+					
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -179,6 +191,10 @@ public class WorkDAO {
 					psmt.setString(2, dto.getId());
 					
 					cnt = psmt.executeUpdate(); //--> 리턴 받아야하는게 cnt!!
+					
+					if(cnt>0) {
+						System.out.println("MONEY가 +15 증가 했습니다!!!");
+					}
 					
 					
 				} catch (Exception e) {

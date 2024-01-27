@@ -80,7 +80,10 @@ public class RestDAO {
 				psmt.setString(2, dto.getId()); 	
 					
 				cnt = psmt.executeUpdate(); //--> 리턴 받아야하는게 cnt!!
-					
+				
+				if(cnt>0) {
+					System.out.println("HP가 +40 증가 했습니다!!!!!");
+				}
 					
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -112,7 +115,11 @@ public class RestDAO {
 				psmt.setString(2, dto.getId());	
 					
 				cnt = psmt.executeUpdate(); //--> 리턴 받아야하는게 cnt!!
-					
+				
+				if(cnt>0) {
+					System.out.println("MONEY가 -30 감소 했습니다!!!!!");
+				}
+				
 					
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -145,7 +152,11 @@ public class RestDAO {
 				psmt.setString(3, dto.getId());
 					
 				cnt = psmt.executeUpdate(); //--> 리턴 받아야하는게 cnt!!
-					
+				
+				if(cnt>0) {
+					System.out.println("HP가 +30 증가하고, money가 -20 감소 하였습니다!!!");
+				}
+				
 					
 			} catch (Exception e) {
 				e.printStackTrace();
