@@ -50,7 +50,6 @@ public class Wk_MemberDAO {
 	                     "FROM worker w " +
 	                     "JOIN worker_mohp wm ON w.id = wm.id " +
 	                     "WHERE w.id = ? AND w.pw = ?";
-
 	        getConn();
 	        psmt = conn.prepareStatement(sql);
 	        psmt.setString(1, mdto.getId());
@@ -60,21 +59,13 @@ public class Wk_MemberDAO {
 
 	        if (rs.next()) {
 	            System.out.println("로그인 성공");
-	            
 	            pdto.setId(rs.getString(1));
 	            pdto.setHp(rs.getInt(2));
 	            pdto.setMoney(rs.getInt(3));
 	            pdto.setCnt_date(rs.getInt(4));
-	            
-	            
-	        } else {
-	            System.out.println("로그인 실패");
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    } finally {
-	        closd();
-	    }
+	        } else {System.out.println("로그인 실패");}
+	    } catch (Exception e) {e.printStackTrace();
+	    } finally {closd();}
 	    return pdto;
 	}
 
@@ -99,13 +90,8 @@ public class Wk_MemberDAO {
 			psmt.setInt(7, 0);
 			
 			cnt=psmt.executeUpdate();
-			if (cnt > 0) {
-				System.out.println("취업 성공. 당장 출근하세요 !");
-				return cnt;
-			} else {
-				System.out.println("서류 탈락.");
-				return cnt;
-			}
+			if (cnt > 0) {System.out.println("취업 성공. 당장 출근하세요 !");return cnt;} 
+			else {System.out.println("서류 탈락.");return cnt;}
 		} catch (Exception e) {e.printStackTrace();
 		} finally {closd();	}
 		return cnt;
@@ -116,13 +102,8 @@ public class Wk_MemberDAO {
 	public void wokerUpdate() {
 		try {
 			closd();
-
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closd();
-		}
+		} catch (Exception e) {e.printStackTrace();
+		} finally {closd();}
 		
 	}
 
@@ -131,25 +112,33 @@ public class Wk_MemberDAO {
 	public void workerDelete() {
 		try {
 			getConn();
-
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closd();
+		} catch (Exception e) {e.printStackTrace();
+		} finally {closd();
 		}
 	}
 
 
 //============================= 랭 킹 ====================================	
 	public void workerRank() {
-
 		try {
 			getConn();
-
+			
+			String sql="select id,money,cnt_date from worker_mohp where rownum <= 10 order by money desc";
+			psmt=conn.prepareStatement(sql);	
+			rs=psmt.executeQuery();
+					
+			System.out.println("=============랭킹확인==============");
+			int cnt=0;
+			while(rs.next()) {
+				cnt++;
+				System.out.println(cnt+"위 부자 아이디 : "+rs.getString(1));
+				System.out.println("Money : "+rs.getInt(2));
+				System.out.println("근무일수 : "+rs.getString(3));
+				System.out.println();
+				
+			}
 			
 			
-
 		} catch (Exception e) {e.printStackTrace();
 		} finally {closd();	}
 	}
@@ -179,17 +168,15 @@ public class Wk_MemberDAO {
 	return listDTO;
 	}//workerList()
 	
-	// ==========================회원 리스트=====================================
+	// ==========================중복 체크=====================================
 	// - 메서드 호출시 true= 중복 false=중복없음
 		public boolean checkId(String joinId) {
-			
 			try {
 		        getConn();
 		        String sql = "SELECT COUNT(*) FROM worker WHERE id=?";
 		        psmt = conn.prepareStatement(sql);
 		        psmt.setString(1, joinId);
 		        rs = psmt.executeQuery();
-
 		        if (rs.next()) {
 		            int count = rs.getInt(1);
 		            if (count > 0) {
@@ -202,7 +189,6 @@ public class Wk_MemberDAO {
 		        }
 		}catch(Exception e){e.printStackTrace();
 		}finally {closd();}
-
 			return false;
 		}//workerList()
 

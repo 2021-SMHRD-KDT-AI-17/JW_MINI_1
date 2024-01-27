@@ -51,25 +51,28 @@ public class main_윤옥산 {
 	//로그인 - 로그인시 play쪽에서 아이디 전달 받을 메소드 필요
 	
 	
- while(true){
-	System.out.print("아이디 입력 : ");
-	String logId=sc.nextLine();
-	mdto.setId(logId);
-	System.out.print("비밀번호 입력 : ");
-	String logPw=sc.nextLine();
-	mdto.setPw(logPw);
-	PlayDTO pdto= new PlayDTO();
-	pdto=mdao.wkLogin(mdto);
-	if(pdto.getId()!=null) {
-	System.out.println(pdto.getId());
-	System.out.println(pdto.getHp());
-	System.out.println(pdto.getMoney());
-	System.out.println(pdto.getCnt_date());
-	break;
-	}
+// while(true){
+//	System.out.print("아이디 입력 : ");
+//	String logId=sc.nextLine();
+//	mdto.setId(logId);
+//	System.out.print("비밀번호 입력 : ");
+//	String logPw=sc.nextLine();
+//	mdto.setPw(logPw);
+//	PlayDTO pdto= new PlayDTO();
+//	pdto=mdao.wkLogin(mdto);
+//	if(pdto.getId()!=null) {
+//	System.out.println(pdto.getId());
+//	System.out.println(pdto.getHp());
+//	System.out.println(pdto.getMoney());
+//	System.out.println(pdto.getCnt_date());
+//	break;
+//	}
 	
+//	-=-------------랭킹
+	System.out.println("");
+	mdao.workerRank();
 	
- }
+ 
  
  
 	}
