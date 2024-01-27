@@ -6,12 +6,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import play.PlayDTO;
+
 public class Wk_MemberDAO {
 	
 
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
+	PlayDTO pdto = null;
 
 //=========================================================================================	
 
@@ -41,52 +44,59 @@ public class Wk_MemberDAO {
 
 //============================= 로  그  인====================================	
 
-	public void wkLogin(Wk_MemberDTO mdto) {
-			
-		try {
-			
-			String sql="select id from worker where id=? and pw=?";
-//test쿼리	String sql="select id from worker where id='김하영5' and pw='하영12'";
-			getConn();
-			psmt=conn.prepareStatement(sql);
-			psmt.setString(1, mdto.getId());
-			psmt.setString(2, mdto.getPw());
-			rs=psmt.executeQuery();
-			//아이디,비밀번호 받아오고 
-			//로그인 성공시 ture 리턴 
-			// OR  ,play테이블에서 머니,정보 가져와서 넘겨주기 
-			if(rs.next()) {
-				System.out.println("로그인 성공");
-			}else {
-				System.out.println("로그인 실패");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closd();
-		}
-		
-		
-	}//wkLogin
+	public PlayDTO wkLogin(Wk_MemberDTO mdto) {
+	    try {
+	        String sql = "SELECT w.id, wm.hp, wm.money, wm.cnt_date " +
+	                     "FROM worker w " +
+	                     "JOIN worker_mohp wm ON w.id = wm.id " +
+	                     "WHERE w.id = ? AND w.pw = ?";
+
+	        getConn();
+	        psmt = conn.prepareStatement(sql);
+	        psmt.setString(1, mdto.getId());
+	        psmt.setString(2, mdto.getPw());
+	        rs = psmt.executeQuery();
+	        pdto= new PlayDTO();
+
+	        if (rs.next()) {
+	            System.out.println("로그인 성공");
+	            
+	            pdto.setId(rs.getString(1));
+	            pdto.setHp(rs.getInt(2));
+	            pdto.setMoney(rs.getInt(3));
+	            pdto.setCnt_date(rs.getInt(4));
+	            
+	            
+	        } else {
+	            System.out.println("로그인 실패");
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        closd();
+	    }
+	    return pdto;
+	}
 
 //============================= 가 입 ====================================	
 	public int wokerJoin(Wk_MemberDTO dto) {
 		int cnt = 0;
 		try {
 			getConn();
-			String sql1 = "insert into worker(id,pw,name) values(?,?,?)";
-			String sql2 = "insert into worker_mohp(id,hp,money,cnt_date) values(?,?,?,?)";
+			String sql = "INSERT ALL " +
+		             "INTO worker(id, pw, name) VALUES(?, ?, ?) " +
+		             "INTO worker_mohp(id, hp, money, cnt_date) VALUES(?, ?, ?, ?) " +
+		             "SELECT * FROM dual";
+			 // 가입시 hp = 100, money = 0, 일한날짜 = 0 으로 초기세팅
 			
-			psmt = conn.prepareStatement(sql1);
+			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getId());
 			psmt.setString(2, dto.getPw());
 			psmt.setString(3, dto.getName());
-			
-			psmt = conn.prepareStatement(sql2); // 가입시 hp = 100, money = 0, 일한날짜 = 0 으로 초기세팅
-			psmt.setString(1, dto.getId());
-			psmt.setInt(2, 100);
-			psmt.setInt(3, 0);
-			psmt.setInt(4, 0);
+			psmt.setString(4, dto.getId());
+			psmt.setInt(5, 100);
+			psmt.setInt(6, 0);
+			psmt.setInt(7, 0);
 			
 			cnt=psmt.executeUpdate();
 			if (cnt > 0) {
