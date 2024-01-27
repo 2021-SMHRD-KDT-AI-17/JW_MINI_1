@@ -44,18 +44,20 @@ public class GoTohomeDAO {
 	// ==========================================================================
 	
 	
-	public int goBus(Wk_MemberDTO dto){
+	public int goBus(PlayDTO dto){
 		
 		int cnt = 0;
 		
 		try {
 			getConn();
-			
-			String sql = "update worker_mohp set hp = hp-20 where id = ? ";
+		
+			String sql = "update WORKER_MoHp set HP = "
+					+ "(select hp from worker_mohp where id = ?)-20 where id = ?";
 			
 			psmt = conn.prepareStatement(sql);
 		
 			psmt.setString(1, dto.getId());
+			psmt.setString(2, dto.getId());
 			cnt = psmt.executeUpdate();
 			
 			if(cnt>0) {
@@ -72,18 +74,20 @@ public class GoTohomeDAO {
 	}
 	//   ======================== 버스 퇴근 ==========================================
 		
-	public int goWalk(Wk_MemberDTO dto) {
+	public int goWalk(PlayDTO dto) {
 		
 		int cnt =0;
 		
 		try {
 			
 			getConn();
-			String sql = "update worker_mohp set hp = hp-20 where id = ? ";
+			String sql = "update WORKER_MoHp set HP = "
+					+ "(select hp from worker_mohp where id = ?)-20 where id = ?";
 			
 			psmt = conn.prepareStatement(sql);
 		
 			psmt.setString(1, dto.getId());
+			psmt.setString(2, dto.getId());
 			cnt = psmt.executeUpdate();
 			
 			if(cnt>0) {
@@ -99,7 +103,7 @@ public class GoTohomeDAO {
 		return cnt;
 	}
 	
-	public int goTaxi(Wk_MemberDTO dto) {
+	public int goTaxi(PlayDTO dto) {
 		
 		int cnt =0;
 		
@@ -107,11 +111,13 @@ public class GoTohomeDAO {
 			
 			getConn();
 			
-			String sql = "update worker_mohp set money = money-50 where id = ? ";
+			String sql = "update WORKER_MoHp set MONEY = "
+					+ "(select money from worker_mohp where id = ?)-50 where id = ?";
 			
 			psmt = conn.prepareStatement(sql);
 		
 			psmt.setString(1, dto.getId());
+			psmt.setString(2, dto.getId());
 			cnt = psmt.executeUpdate();
 			
 			if(cnt>0) {
@@ -125,6 +131,6 @@ public class GoTohomeDAO {
 			close();
 		}
 		return cnt;
-	} 
+	}
 	
 }

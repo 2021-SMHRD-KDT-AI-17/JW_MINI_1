@@ -20,6 +20,6 @@ COMMIT;
 ALTER TABLE WORKER_MoHp MODIFY ID VARCHAR2(100);
 
 SELECT * FROM WORKER_mohp;
-
+SELECT * FROM WORKER;
 INSERT INTO WORKER values ('ASDASDQEQDdasad', 'dqoihdoewhof', 'adjfhasdijfasfddsf', '');
 
