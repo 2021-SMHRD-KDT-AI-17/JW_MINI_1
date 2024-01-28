@@ -101,8 +101,8 @@ public class main_고희청 {
 									int cnt = wdao.overtime(pdto);
 									if(cnt>0) {
 										System.out.println("야근 당첨!!");
-										System.out.println("이름 : " + pdto.getId() + "HP : "+ (pdto.getHp()-20)
-																+ "Money : " + (pdto.getMoney()+20));
+										System.out.println("이름 : " + pdto.getId() + " HP : "+ (pdto.getHp()-20)
+																+ " Money : " + (pdto.getMoney()+20));
 									}
 								}else if(r==2) { // 2일때는 업무실수
 								
@@ -110,8 +110,8 @@ public class main_고희청 {
 									
 									if(cnt>0) {
 										System.out.println("업무 실수!!");
-										System.out.println("이름 : " + pdto.getId() + "HP : "+ (pdto.getHp()-10)
-												+ "Money : " + (pdto.getMoney()+10));
+										System.out.println("이름 : " + pdto.getId() + " HP : "+ (pdto.getHp()-10)
+												+ " Money : " + (pdto.getMoney()-10));
 									}
 								}else if(r==3) { // 3일때는 혼나기
 								
@@ -119,8 +119,8 @@ public class main_고희청 {
 									
 									if(cnt>0) {
 										System.out.println("상사한테 혼나기!!");
-										System.out.println("이름 : " + pdto.getId() + "HP : "+ (pdto.getHp()-20)
-												+ "Money : " + pdto.getMoney());
+										System.out.println("이름 : " + pdto.getId() + " HP : "+ (pdto.getHp()-20)
+												+ " Money : " + pdto.getMoney());
 									}
 									
 								}else { // 4일때는 정상업무
@@ -129,8 +129,8 @@ public class main_고희청 {
 									
 									if(cnt>0) {
 										System.out.println("룰루랄라 즐겁게 일하기~~ ");
-										System.out.println("이름 : " + pdto.getId() + "HP : "+ pdto.getHp()
-												+ "Money : " + (pdto.getMoney()+15));
+										System.out.println("이름 : " + pdto.getId() + " HP : "+ pdto.getHp()
+												+ " Money : " + (pdto.getMoney()+15));
 									}
 									
 								}
