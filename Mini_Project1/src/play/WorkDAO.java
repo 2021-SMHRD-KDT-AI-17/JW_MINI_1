@@ -75,7 +75,7 @@ public class WorkDAO {
 						     + "money = (select money from worker_MoHp where id = ?) + 20 "
 						     + "where id = ? ";
 					
-					conn.prepareStatement(sql); //sql 넘겨주기!
+					psmt = conn.prepareStatement(sql); //sql 넘겨주기!
 					
 					psmt.setString(1, dto.getId()); // -->  ?  채우기!
 					psmt.setString(2, dto.getId());
@@ -112,7 +112,7 @@ public class WorkDAO {
 							     + "money = (select money from worker_MoHp where id = ?) - 10 "
 							     + "where id = ? ";
 					
-					conn.prepareStatement(sql); //sql 넘겨주기!
+					psmt = conn.prepareStatement(sql); //sql 넘겨주기!
 					
 					psmt.setString(1, dto.getId()); // -->  ?  채우기!
 					psmt.setString(2, dto.getId());
@@ -149,7 +149,7 @@ public class WorkDAO {
 					String sql = "update WORKER_MoHp set hp = (select hp from worker_MoHp where id = ?)-20 "
 						     + "where id = ? ";
 					
-					conn.prepareStatement(sql); //sql 넘겨주기!
+					psmt = conn.prepareStatement(sql); //sql 넘겨주기!
 					
 					psmt.setString(1, dto.getId()); // -->  ?  채우기!
 					psmt.setString(2, dto.getId());
@@ -185,7 +185,7 @@ public class WorkDAO {
 					String sql = "update WORKER_MoHp set money = (select money from worker_MoHp where id = ?)+15 "
 						     + "where id = ? ";
 					
-					conn.prepareStatement(sql); //sql 넘겨주기!
+					psmt = conn.prepareStatement(sql); //sql 넘겨주기!
 					
 					psmt.setString(1, dto.getId()); // -->  ?  채우기!
 					psmt.setString(2, dto.getId());
