@@ -95,23 +95,29 @@ public class main_윤정원 {
 								System.out.println("랜덤 발생");
 								//pdto.setId(pdto); // 로그인한 id pdto에 담기
 								System.out.println(r);
-
-								if(r==1) { // 1일때는 야근하기
 								
+								if(count>=4) {
+									System.out.println("하루 일하기는 3번만 가능합니다!");
+									break;
+								}
+								if(r==1) { // 1일때는 야근하기
+									
 									int cnt = wdao.overtime(pdto);
 									if(cnt>0) {
 										System.out.println("야근 당첨!!");
 										System.out.println("이름 : " + pdto.getId() + "HP : "+ (pdto.getHp()-20)
 																+ "Money : " + (pdto.getMoney()+20));
+										count++;
 									}
 								}else if(r==2) { // 2일때는 업무실수
-								
+									
 									int cnt = wdao.mistake(pdto);
 									
 									if(cnt>0) {
 										System.out.println("업무 실수!!");
 										System.out.println("이름 : " + pdto.getId() + "HP : "+ (pdto.getHp()-10)
-												+ "Money : " + (pdto.getMoney()+10));
+												+ "Money : " + (pdto.getMoney()-10));
+										count++;
 									}
 								}else if(r==3) { // 3일때는 혼나기
 								
@@ -121,6 +127,7 @@ public class main_윤정원 {
 										System.out.println("상사한테 혼나기!!");
 										System.out.println("이름 : " + pdto.getId() + "HP : "+ (pdto.getHp()-20)
 												+ "Money : " + pdto.getMoney());
+										count++;
 									}
 									
 								}else { // 4일때는 정상업무
@@ -131,6 +138,7 @@ public class main_윤정원 {
 										System.out.println("룰루랄라 즐겁게 일하기~~ ");
 										System.out.println("이름 : " + pdto.getId() + "HP : "+ pdto.getHp()
 												+ "Money : " + (pdto.getMoney()+15));
+										count++;
 									}
 									
 								}
@@ -140,6 +148,7 @@ public class main_윤정원 {
 							
 							
 							if(select == 2) { // ** 자기계발 하기
+								pdto = mdao.wkLogin(logdto, 1);
 								System.out.println("[1]자기계발서 읽기 [2] 1:1 컨설턴트 받기 [3]임장 다니기");
 								int input = sc.nextInt();
 								
@@ -171,8 +180,8 @@ public class main_윤정원 {
 							
 							}
 							
-							if (select == 3) {
-								
+							if (select == 3) { // ** 휴식
+								pdto = mdao.wkLogin(logdto, 1);
 								System.out.println("[1]취침 [2] 쇼핑 [3]식사");
 								
 								int input = sc.nextInt();
@@ -205,7 +214,7 @@ public class main_윤정원 {
 									if(cnt > 0) {
 										System.out.println("이름 : "  + pdto.getId() +  " HP : " + 
 												(pdto.getHp()+30) + " MONEY :  " + (pdto.getMoney()-20));
-										System.out.println("식사 했니다");
+										System.out.println("식사 했습니다");
 										System.out.println();
 										
 									}
@@ -216,7 +225,8 @@ public class main_윤정원 {
 							
 						
 							
-							if(select  ==4 ) { // 퇴근하기 
+							if(select  ==4 ) { // ** 퇴근하기 
+								pdto = mdao.wkLogin(logdto, 1);
 								System.out.println(" [1]버스타기 [2]걸어가기 [3]택시타기"); // 로그인 성공 후 선택
 								int input = sc.nextInt();
 								
@@ -255,16 +265,20 @@ public class main_윤정원 {
 								}
 								
 							}
-							
+						
 							
 						}
-					
-					
-					
-					
-					}
-				
+				}
 			}
+				
+
+				if(choice == 3) { // ** 랭킹보기
+					
+					System.out.println("10위까지의 랭킹 출력");
+				
+					mdao.workerRank();
+						
+				}
 		}	
 				
 	}
