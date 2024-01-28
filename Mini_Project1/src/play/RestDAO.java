@@ -106,7 +106,7 @@ public class RestDAO {
 					
 				// sql 문 적기!!
 					
-				String sql = "update WORKER_MoHp set money = (select hp from worker_MoHp where id = ?)-30 "
+				String sql = "update WORKER_MoHp set money = (select money from worker_MoHp where id = ?)-30 "
 					     + "where id = ? ";  //money 랜덤 변경***
 					
 				psmt = conn.prepareStatement(sql); //sql 넘겨주기!
