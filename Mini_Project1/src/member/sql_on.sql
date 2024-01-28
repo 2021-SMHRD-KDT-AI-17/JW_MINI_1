@@ -25,4 +25,4 @@ INSERT INTO WORKER values ('ASDASDQEQDdasad', 'dqoihdoewhof', 'adjfhasdijfasfdds
 
 update worker_mohp wh set wh.cnt_date = wh.cnt_date+1
 from worker wk w
-where wh.id = w.id;
+where wh.id in(select w.id from worker w );
