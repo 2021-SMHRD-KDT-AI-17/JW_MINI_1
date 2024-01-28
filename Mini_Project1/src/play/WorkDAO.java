@@ -182,7 +182,7 @@ public class WorkDAO {
 					
 					// sql 문 적기!!
 					
-					String sql = "update WORKER_MoHp set money = (select hp from worker_MoHp where id = ?)+15 "
+					String sql = "update WORKER_MoHp set money = (select money from worker_MoHp where id = ?)+15 "
 						     + "where id = ? ";
 					
 					conn.prepareStatement(sql); //sql 넘겨주기!
