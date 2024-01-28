@@ -42,7 +42,7 @@ public class SelfPlusDAO {
 	}
 	
 	
-	public int readBook(PlayDTO dto) {
+	public int readBook(PlayDTO dto) { // 자기계발서 읽기 선택시 money가 50 증가
 			
 		int cnt = 0;
 		
@@ -73,9 +73,10 @@ public class SelfPlusDAO {
 	}
 	// ======================== 자기계발서 읽기 ========================================
 	
-	public int consult(PlayDTO dto) {
+	public PlayDTO consult(PlayDTO dto) { // 1:1 컨설턴트시 1~50 사이 랜덤으로 money가 증가
 		
-		Random rd = new Random(); 
+		Random rd = new Random();
+		PlayDTO pdto = new PlayDTO();
 		int cnt = 0;
 		int ran = rd.nextInt(49+1); // money에 더해질 랜덤수 ( 1~50 )
 		
@@ -92,7 +93,10 @@ public class SelfPlusDAO {
 			psmt.setString(3, dto.getId());
 			
 			cnt = psmt.executeUpdate();
+			pdto.setCnt(cnt);
+			pdto.setRan(ran);
 			
+
 			if(cnt >0) {
 				System.out.println("Money가 +" + ran +" 증가 하였습니다!");
 			}
@@ -103,15 +107,16 @@ public class SelfPlusDAO {
 			close();
 		}
 		
-		return cnt;
+		return pdto;
 	}
-	public int property(PlayDTO dto) {
+	public int property(PlayDTO dto) { // 임장 다니기 선택시, money가 20 증가
 		
 		int cnt = 0;
 		
 		try {
 			
 			getConn();
+
 			
 			String sql = "update WORKER_MoHp set MONEY = "
 						+ "(select money from worker_mohp where id = ?)+20 where id = ?";

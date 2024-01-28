@@ -23,3 +23,6 @@ SELECT * FROM WORKER_mohp;
 SELECT * FROM WORKER;
 INSERT INTO WORKER values ('ASDASDQEQDdasad', 'dqoihdoewhof', 'adjfhasdijfasfddsf', '');
 
+update worker_mohp wh set wh.cnt_date = wh.cnt_date+1
+from worker wk w
+where wh.id = w.id;

@@ -6,6 +6,23 @@ public class PlayDTO {
 	private int hp;
 	private int cnt_date;
 	private String id;
+	private int ran;
+	private int cnt;
+	
+	
+	public int getRan() {
+		return ran;
+	}
+	public void setRan(int ran) {
+		this.ran = ran;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	
 	
 	
 	public int getMoney() {

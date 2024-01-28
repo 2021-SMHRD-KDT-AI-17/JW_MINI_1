@@ -44,8 +44,8 @@ public class GoTohomeDAO {
 	// ==========================================================================
 	
 	
-	public int goBus(PlayDTO dto){
-		
+	public int goBus(PlayDTO dto){ // 버스퇴근시 hp가 20 감소하고, cnt_date는 +1 되면서
+								   // 첫 화면으로 돌아가는 기능
 		int cnt = 0;
 		
 		try {
@@ -53,7 +53,7 @@ public class GoTohomeDAO {
 		
 			String sql = "update WORKER_MoHp set HP = "
 					+ "(select hp from worker_mohp where id = ?)-20 where id = ?";
-			
+	
 			psmt = conn.prepareStatement(sql);
 		
 			psmt.setString(1, dto.getId());
@@ -74,7 +74,8 @@ public class GoTohomeDAO {
 	}
 	//   ======================== 버스 퇴근 ==========================================
 		
-	public int goWalk(PlayDTO dto) {
+	public int goWalk(PlayDTO dto) {// 걸어가기 퇴근시 hp가 20 감소하고, cnt_date는 +1 되면서
+		   							// 첫 화면으로 돌아가는 기능
 		
 		int cnt =0;
 		
@@ -103,7 +104,8 @@ public class GoTohomeDAO {
 		return cnt;
 	}
 	
-	public int goTaxi(PlayDTO dto) {
+	public int goTaxi(PlayDTO dto) { // 택시스퇴근시 money가 50 감소하고, cnt_date는 +1 되면서
+		   							 // 첫 화면으로 돌아가는 기능
 		
 		int cnt =0;
 		
@@ -111,6 +113,7 @@ public class GoTohomeDAO {
 			
 			getConn();
 			
+		
 			String sql = "update WORKER_MoHp set MONEY = "
 					+ "(select money from worker_mohp where id = ?)-50 where id = ?";
 			
@@ -122,6 +125,7 @@ public class GoTohomeDAO {
 			
 			if(cnt>0) {
 				System.out.println("Money가 -50 감소 했습니다!");
+				System.out.println();
 			}
 			
 		
