@@ -188,12 +188,19 @@ public class Wk_MemberDAO {
 					
 			System.out.println("=============랭킹확인==============");
 			int cnt=0;
+			
+			String[] building = {"시그니엘 잠실 건물주 ","롯데월드 타워 ","삼성 타워팰리스 ","목동 현대하이페리온 ","서울 엘시티 ",
+					"15평 빌라소유","신촌 원룸 건물","반지하","고시텔","찜질방 살이"};
+			int count =0;
+			
 			while(rs.next()) {
 				cnt++;
-				System.out.println(cnt+"위 부자 아이디 : "+rs.getString(1));
+				System.out.println(cnt+"위 부자 이름 : "+rs.getString(1) + " "+  building[count]);
 				System.out.println("Money : "+rs.getInt(2));
 				System.out.println("근무일수 : "+rs.getString(3));
 				System.out.println();
+				
+				count++;
 			}
 		} catch (Exception e) {e.printStackTrace();
 		} finally {closd();	}

@@ -42,10 +42,11 @@ public class main_윤정원 {
      	 if(count == 0) {
      		  wdao.hp(input_id); 
          	 System.out.println(" 과로로 쓰러졌습니다! 회복하고 오세요!");
+         	 a.gameover();
          	 count = 1;
      	 }
          System.out.println("======== 환영합니다! 아래 메뉴에서 선택해주세요 ========");
-         System.out.println("[1]입사지원 [2]로그인 [3] 랭킹");
+         System.out.println("\t  [1]입사지원 [2]로그인 [3] 랭킹  \t");
          int choice = sc.nextInt();
          
             if(choice ==1 ) { // **회원가입
@@ -89,8 +90,8 @@ public class main_윤정원 {
             	   a.introText(); // 인트로 설명
                    a.gameRule();  // 게임룰 설명
                     
-                  System.out.print("이름 : " + pdto.getId() + "\t");
-                  System.out.print("HP : " + pdto.getHp()+"\t");
+                  System.out.print("이름 : " + pdto.getId()) ;
+                  System.out.print("    HP : " + pdto.getHp()+"\t");
                   System.out.print("Money : " + pdto.getMoney()+ "\t");
                   System.out.print("근무일수 : " + pdto.getCnt_date()+ "\t");
                   System.out.println("총 기회 : " + pdto.getSum_opp()+ "\t" + "일하기 기회 : "  + pdto.getWork_opp() + "\n");
@@ -188,10 +189,10 @@ public class main_윤정원 {
                            pdto.setHp(hp);
                            pdto.setMoney(money);
                         
-                              System.out.println(" hp-20 감소, money +20 증가!");
+                              System.out.println(" hp-20 감소, money +20 증가! ");
                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
                                + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
-                               + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+                               + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp() + "\n");
                            
                         }else if(r==2) { // 2일때는 업무실수 ( money -10 , hp -10)
                            
@@ -221,7 +222,7 @@ public class main_윤정원 {
                               System.out.println("hp -10, money -10 감소!");
                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
                                + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
-                               + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+                               + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp() + "\n");
 
                            
                         }else if(r==3) { // 3일때는 혼나기 ( hp-20)
@@ -252,7 +253,7 @@ public class main_윤정원 {
                               System.out.println(" hp-20 감소! ");
                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
                                + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
-                               + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+                               + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp()+ "\n");
                               
                         }else { // 4일때는 정상업무 ( money +15 )
                            
@@ -279,7 +280,7 @@ public class main_윤정원 {
                               System.out.println(" money +15 증가!");
                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
                                + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
-                               + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+                               + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp()+ "\n");
                            }
                            
                         }
@@ -328,7 +329,7 @@ public class main_윤정원 {
                                    System.out.println("money +30 증가!");
                                    System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
                                                    + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
-                                                   + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+                                                   + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp()+ "\n");
                                   
                                   
                                }else if(input ==2) {  // 2 1:1 컨설트 받기  money +1~20 <랜덤>
@@ -357,7 +358,7 @@ public class main_윤정원 {
                                      System.out.println(" money "+"+"+ consultrd  +" 증가!");
                                      System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
                                                     + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
-                                                    + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+                                                    + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp()+ "\n");
                                   
                                }else if(input ==3) {  // 3 임장다니기 money +20
                                   
@@ -382,7 +383,7 @@ public class main_윤정원 {
                                    System.out.println(" money +20 증가!");
                                    System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
                                                   + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
-                                                  + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+                                                  + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp()+ "\n");
                                   }
                                }
                             
@@ -406,7 +407,7 @@ public class main_윤정원 {
                                
                                System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
                                        + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
-                                       + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+                                       + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp()+ "\n");
                                
                                
                                
@@ -437,7 +438,7 @@ public class main_윤정원 {
                                    System.out.println(" hp +40 증가!");
                                    System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
                                                     + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
-                                                    + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+                                                    + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp()+ "\n");
                                   }
                                
                                	else if(input ==2) { // 쇼핑 선택시  money 랜덤 일단 -1~-20
@@ -465,7 +466,7 @@ public class main_윤정원 {
                                    System.out.println("money " +"-"+shoprd+ " 감소!");
                                    System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
                                                     + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
-                                                    + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+                                                    + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp()+ "\n");
                                   
                                   }
                                
@@ -494,7 +495,7 @@ public class main_윤정원 {
                                    System.out.println("hp +30 증가, money -20 감소!");
                                     System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
                                                     + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
-                                                    + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+                                                    + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp()+ "\n");
                                }
                                
                             }
@@ -512,11 +513,13 @@ public class main_윤정원 {
                               pdto = wdao.overtime(pdto);
                               System.out.println("기회가 모두 소진됐습니다! 다시 로그인 해주세요");
                               break;
-                           }
+                              }
                                
                           
                                System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
-                                              + " \t"+ "Money : " +pdto.getMoney());
+                               + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
+                               + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp()+ "\n");
+          
                                pdto = mdao.wkLogin(logdto, 1);
                                System.out.println(" [1]버스타기 [2]걸어가기 [3]택시타기"); // 로그인 성공 후 선택
                                int input = sc.nextInt();
@@ -543,7 +546,7 @@ public class main_윤정원 {
                                   System.out.println("hp -20 감소!");
                                   System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
                                                  + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
-                                                 + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+                                                 + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp()+ "\n");
                                    break;
                                   }
                                
@@ -570,7 +573,7 @@ public class main_윤정원 {
                                      System.out.println("hp -20 감소!");
                                      System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
                                                     + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
-                                                    + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+                                                    + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp()+ "\n");
                                      
                                      break;
                                   }
@@ -598,28 +601,31 @@ public class main_윤정원 {
                                      System.out.println("money -50 감소!");
                                      System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
                                                     + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
-                                                    + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+                                                    + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp()+ "\n");
                                      break;
                                }       
                             }
-                                              
+                            if(choice == 3) { // ** 랭킹보기
+                                
+                                System.out.println("10위까지의 랭킹 출력");
+                             
+                                mdao.workerRank();
+                             }                 
                          }
-                   }
-            }
-                               
-      
-            if(choice == 3) { // ** 랭킹보기
-               
-               System.out.println("10위까지의 랭킹 출력");
+                  	
             
-               mdao.workerRank();
+                           
+           
                   
             }
       }   
             
+      }
    }
-   
 }
+
+   
+
    
          
       
