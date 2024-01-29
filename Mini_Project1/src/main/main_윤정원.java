@@ -74,11 +74,11 @@ public class main_윤정원 {
 						System.out.print("HP : " + pdto.getHp()+"\t");
 						System.out.print("Money : " + pdto.getMoney()+ "\t");
 						System.out.print("근무일수 : " + pdto.getCnt_date()+ "\t");
-						System.out.println("총 기회 : " + pdto.getSum_opp()+ "\t" + "일하기 기회 : "  + pdto.getWork_opp());
+						System.out.println("총 기회 : " + pdto.getSum_opp()+ "\t" + "일하기 기회 : "  + pdto.getWork_opp() + "\n");
 					
 						
-						System.out.println("하루 일하기3번 까지 선택 가능하며, \n "
-								+ "퇴근하기를 선택해야 게임이 종료가 됩니다. \n"); // 게임룰 설명
+						System.out.println("하루 일하기3번 까지 선택 가능하며, 총 5번 선택 가능합니다.\n"
+								          + "5번 초과 수행시 또는 퇴근하기를 선택해야 게임이 종료가 됩니다. \n"); // 게임룰 설명
 //						int money = pdto.getMoney();
 //						int hp = pdto.getHp();
 //						String id = pdto.getId();
@@ -105,18 +105,21 @@ public class main_윤정원 {
 							if(select ==1) { // ** 일하기 
 								
 								if(sum_opp <= 0) {
+									
 									sum_opp = 5;
 									work_opp = 3;
 									pdto.setCnt_date(cnt_date=cnt_date+1);  
 									pdto = wdao.overtime(pdto);
+									System.out.println("기회가 모두 소진됐습니다! 다시 로그인 해주세요");
+									break;
+									
 									
 								}
 								
-//								if(work_opp <= 0) {
-//									System.out.println("오늘은 일할 수 없습니다!");
-//									break;
-//				
-//								}
+								if(work_opp <= 0) {
+									System.out.println("오늘은 일할 수 없습니다!");
+									break;
+								}
 //								
 //								sum_opp =  sum_opp-1;
 //								work_opp = work_opp-1;
@@ -129,12 +132,12 @@ public class main_윤정원 {
 							
 								Random rd = new Random();
 								int r = rd.nextInt(4)+1; // 1~4 랜덤수 발생
-								System.out.println("랜덤 발생");
+								//System.out.println("랜덤 발생");
 								//pdto.setId(pdto); // 로그인한 id pdto에 담기
-								System.out.println(r);
+								// System.out.println(r);
 
 							
-								
+								System.out.println("");
 								if(r==1) { // 1일때는 야근하기 ( money +20 , hp - 20)
 										
 									
@@ -166,8 +169,8 @@ public class main_윤정원 {
 									hp -=10;
 									
 									pdto.setMoney(money);
-								
 									pdto.setHp(hp);
+									
 									sum_opp =  sum_opp-1;
 									pdto.setSum_opp(sum_opp);
 									work_opp = work_opp-1;
@@ -175,6 +178,7 @@ public class main_윤정원 {
 	
 						
 									pdto = wdao.overtime(pdto);
+									
 									money = pdto.getMoney();
 									hp = pdto.getHp();
 									pdto.setHp(hp);
@@ -245,9 +249,22 @@ public class main_윤정원 {
 									
 								}
 							if(select == 2) { // ** 자기계발 하기
-		                         System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
-		                          + " \t"+ "Money : " +pdto.getMoney());
-		                         pdto = mdao.wkLogin(logdto, 1);
+								
+								
+								if(sum_opp <= 0) {
+									sum_opp = 5;
+									work_opp =3;
+									
+									pdto.setCnt_date(cnt_date=cnt_date+1);  
+									pdto = wdao.overtime(pdto);
+									System.out.println("오늘 하루 선택할 수 있는 기회가 마감되었습니다");
+									break;
+								}
+								
+								System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+								 		+ " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : "
+								 		 + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+		                   //      pdto = mdao.wkLogin(logdto, 1);
 		                         System.out.println("[1]자기계발서 읽기 [2] 1:1 컨설턴트 받기 [3]임장 다니기");
 		                         int input = sc.nextInt();
 		                         
@@ -255,44 +272,89 @@ public class main_윤정원 {
 		                            
 		                            money +=30;
 		                            pdto.setMoney(money);
+		                        
+									sum_opp =  sum_opp-1;
+									pdto.setSum_opp(sum_opp);
+								
+						
+									pdto = wdao.overtime(pdto);
+									money = pdto.getMoney();
+									hp = pdto.getHp();
+									pdto.setHp(hp);
+									pdto.setMoney(money);
 		          
 		                   
-		                            pdto = wdao.overtime(pdto);
+		                            pdto = sdao.selfPlus(pdto);
 		                         
 		                               System.out.println("자기계발!! money +30 증가");
-		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
-		                                            + " \t"+ "Money : " +pdto.getMoney());   
+		                           	System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+		                           						+ " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
+		                           						+ pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
 		                            
 		                            
 		                         }else if(input ==2) {  // 2 1:1 컨설트 받기  money +1~20 <랜덤>
 		                            Random rd = new Random();
 		                            int consultrd=rd.nextInt(20)+1;
+		                            
 		                            money +=consultrd;
 		                            pdto.setMoney(money);
 		          
+		                            sum_opp =  sum_opp-1;
+									pdto.setSum_opp(sum_opp);
+								
 		                   
 		                            pdto = wdao.overtime(pdto);
-		                         
+		                            money = pdto.getMoney();
+									hp = pdto.getHp();
+									pdto.setHp(hp);
+									pdto.setMoney(money);
+									
+									pdto = sdao.selfPlus(pdto);
+									
 		                               System.out.println("1:1 컨설트 받기!! money "+"+"+ consultrd  +" 증가");
-		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
-		                                            + " \t"+ "Money : " +pdto.getMoney());   
+		                            	System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+                   											+ " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
+                   											+ pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
 		                            
 		                         }else if(input ==3) {  // 3 임장다니기 money +20
-		                            money +=20;
+		                            
+		                        	money +=20;
 		                            pdto.setMoney(money);
 		          
+		                            sum_opp =  sum_opp-1;
+									pdto.setSum_opp(sum_opp);
+								
+		                   
+		                            pdto = wdao.overtime(pdto);
+		                            money = pdto.getMoney();
+									hp = pdto.getHp();
+									pdto.setHp(hp);
+									pdto.setMoney(money);
+									
+
 		                   
 		                            pdto = wdao.overtime(pdto);
 		                         
 		                               System.out.println("임장다니기!! money +20 증가");
 		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
-		                                            + " \t"+ "Money : " +pdto.getMoney());
+                   						 				+ " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
+                   						 				+ pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
 		                            }
 		                         }
 		                      
 		                      
 		                      
 		                      if (select == 3) { // ** 휴식
+		                    	  
+		                   
+		                    	  if(sum_opp <= 0) {
+										sum_opp = 5;
+										work_opp = 3;
+										pdto.setCnt_date(cnt_date=cnt_date+1);  
+										pdto = wdao.overtime(pdto);
+										
+									}
+		                    	  
 		                         System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
 		                          + " \t"+ "Money : " +pdto.getMoney());
 		                         pdto = mdao.wkLogin(logdto, 1);
@@ -301,94 +363,165 @@ public class main_윤정원 {
 		                         int input = sc.nextInt();
 		                         
 		                         if(input ==1) { // 취침 선택시  hp + 40
-		                            hp +=40;
+		                            
+		                        	hp +=40;
 		                            pdto.setHp(hp);
+		                            
+		                            sum_opp =  sum_opp-1;
+									pdto.setSum_opp(sum_opp);
+								
+		                   
+		                            pdto = wdao.overtime(pdto);
+		                            money = pdto.getMoney();
+									hp = pdto.getHp();
+									pdto.setHp(hp);
+									pdto.setMoney(money);
 
 		                            pdto = wdao.overtime(pdto);
 		                         
 		                               System.out.println("취침!! hp +40 증가");
-		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
-		                                            + " \t"+ "Money : " +pdto.getMoney());
-		                            
+		                            	System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+                   											+ " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
+                   											+ pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
 		                            }
 		                         
 		                         else if(input ==2) { // 쇼핑 선택시  money 랜덤 일단 -1~-20
-		                            Random rd1 = new Random();
+		                            
+		                        	 Random rd1 = new Random();
 		                            int shoprd=rd1.nextInt(20)+1;
 		                            
 		                            
 		                            money -=shoprd;
 		                            pdto.setMoney(money);
+		                            
+		                            sum_opp =  sum_opp-1;
+									pdto.setSum_opp(sum_opp);
+								
+		                   
+		                            pdto = wdao.overtime(pdto);
+		                            money = pdto.getMoney();
+									hp = pdto.getHp();
+									pdto.setHp(hp);
+									pdto.setMoney(money);
 		          
 		                   
 		                            pdto = wdao.overtime(pdto);
 		                         
 		                               System.out.println("쇼핑!! money " +"-"+shoprd+ " 감소");
-		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
-		                                            + " \t"+ "Money : " +pdto.getMoney());
+		                            	System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+                   											+ " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
+                   											+ pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
 		                            
 		                            }
 		                         
 		                         else if(input == 3) { // 식사 선택시  hp +30  money -20
-		                            hp +=30;
+		                            
+		                        	 hp +=30;
 		                            money -=20;
 		                            pdto.setHp(hp);
 		                            pdto.setMoney(money);
 		                            
+		                            sum_opp =  sum_opp-1;
+									pdto.setSum_opp(sum_opp);
+								
+		                   
+		                            pdto = wdao.overtime(pdto);
+		                            money = pdto.getMoney();
+									hp = pdto.getHp();
+									pdto.setHp(hp);
+									pdto.setMoney(money);
+		                            
 		                            pdto = wdao.overtime(pdto);
 		                         
 		                               System.out.println("식사!! hp +30 증가, money -20 감소");
-		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
-		                                            + " \t"+ "Money : " +pdto.getMoney());
+		                            	System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+                   											+ " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
+                   											+ pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
 		                         }
 		                         
 		                      }
 		                      
-		                      
-		                   
-		                      
+		                           
 		                      if(select  ==4 ) { // ** 퇴근하기 
 		                         System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
-		                          + " \t"+ "Money : " +pdto.getMoney());
+		                         					+ " \t"+ "Money : " +pdto.getMoney());
 		                         pdto = mdao.wkLogin(logdto, 1);
 		                         System.out.println(" [1]버스타기 [2]걸어가기 [3]택시타기"); // 로그인 성공 후 선택
 		                         int input = sc.nextInt();
 		                         
 		                         if(input ==1) { // 버스 타기 선택시  hp -20 
-		                            hp -=20;
+		                           
+		                        	hp -=20;
 		                            pdto.setHp(hp);
+		                            
+		                            sum_opp =  sum_opp-1;
+									pdto.setSum_opp(sum_opp);
+								
+		                   
+		                            pdto = wdao.overtime(pdto);
+		                            money = pdto.getMoney();
+									hp = pdto.getHp();
+									pdto.setHp(hp);
+									pdto.setMoney(money);
 
 		                            pdto = wdao.overtime(pdto);
 		                         
 		                               System.out.println("버스 타기!! hp -20 감소");
 		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
-		                                            + " \t"+ "Money : " +pdto.getMoney());
+                   										+ " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
+                   										+ pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
 		                               break;
 		                            }
 		                         
 		                         else if(input ==2) { // 걸어가기 선택시  hp -20
-		                            hp -=20;
+		                            
+		                        	 hp -=20;
 		                            pdto.setHp(hp);
 
+		                            sum_opp =  sum_opp-1;
+									pdto.setSum_opp(sum_opp);
+								
+		                   
+		                            pdto = wdao.overtime(pdto);
+		                            money = pdto.getMoney();
+									hp = pdto.getHp();
+									pdto.setHp(hp);
+									pdto.setMoney(money);
+		                            
+		                            
 		                            pdto = wdao.overtime(pdto);
 		                         
 		                               System.out.println("걸어가기!! hp -20 감소");
-		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
-		                                            + " \t"+ "Money : " +pdto.getMoney());
+		                            	System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+                   											+ " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
+                   											+ pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
 		                               
 		                               break;
 		                            }
 		                         
 		                         else if(input == 3) { // 택시타기 선택시   money -50
-		                            money -=50;
+		                            
+		                        	 
+		                        	 money -=50;
 		                            pdto.setMoney(money);
 		          
+		                            sum_opp =  sum_opp-1;
+									pdto.setSum_opp(sum_opp);
+								
+		                   
+		                            pdto = wdao.overtime(pdto);
+		                            money = pdto.getMoney();
+									hp = pdto.getHp();
+									pdto.setHp(hp);
+									pdto.setMoney(money);
+		                            
 		                   
 		                            pdto = wdao.overtime(pdto);
 		                         
 		                               System.out.println("택시타기!! money -50 감소");
-		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
-		                                            + " \t"+ "Money : " +pdto.getMoney());
+		                            	System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+                   											+ " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
+                   											+ pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
 		                               break;
 		                         }       
 		                      }

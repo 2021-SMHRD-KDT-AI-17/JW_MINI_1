@@ -65,6 +65,9 @@ public class SelfPlusDAO {
 						pdto.setId(rs.getString(1));
 						pdto.setHp(rs.getInt(2));
 						pdto.setMoney(rs.getInt(3));
+						pdto.setCnt_date(rs.getInt(4));
+						pdto.setSum_opp(rs.getInt(5));
+						pdto.setWork_opp(rs.getInt(6));
 					
 					}
 					
@@ -89,28 +92,47 @@ public class SelfPlusDAO {
 			
 			getConn();
 			
-			String sql = "update WORKER_MoHp set  hp= ?,money =?  where id = ? ";
 			
-			psmt = conn.prepareStatement(sql);
+			String sql = "update WORKER_MoHp set  hp= ?,money =?, sum_opp = ?, work_opp= ?, cnt_date =? where id = ? ";
 			
-			psmt.setInt(1, dto.getHp());
+			psmt = conn.prepareStatement(sql); //sql 넘겨주기!
+			
+			psmt.setInt(1, dto.getHp()); // main 출력 클래스에서 받아온 dto들의 값을 가져옴
 			psmt.setInt(2, dto.getMoney());
-			psmt.setInt(2, dto.getMoney());
-			cnt = psmt.executeUpdate();
+			psmt.setInt(3, dto.getSum_opp());
+			psmt.setInt(4, dto.getWork_opp());
+			psmt.setInt(5, dto.getCnt_date());	
+			psmt.setString(6, dto.getId());
+				
+			cnt  = psmt.executeUpdate();
 			
-			
-			if(cnt>0) { // 앞의 sql 문이 실행되면 cnt_date 컬럼 값에도 1 증가 시키기
-				String cntdate_plus = "update WORKER_MoHp set CNT_DATE = "
-									+ "(select cnt_date from worker_mohp where id = ?)+1 where id = ?";
-				psmt = conn.prepareStatement(cntdate_plus);
-				
-				psmt.setString(1, dto.getId());
-				psmt.setString(2, dto.getId());
-				
-				psmt.executeUpdate();
-				System.out.println("MONEY가 +50 증가 했습니다!");
-				
+			if(cnt>0) {
+				pdto = save(dto.getId()); // save 함수에 main 출력 클래스에서 받아온 id 값을
+										  //  매개변수로 넘겨주고 실행
 			}
+			
+			
+//			String sql = "update WORKER_MoHp set  hp= ?,money =?  where id = ? ";
+//			
+//			psmt = conn.prepareStatement(sql);
+//			
+//			psmt.setInt(1, dto.getHp());
+//			psmt.setInt(2, dto.getMoney());
+//			psmt.setInt(2, dto.getMoney());
+//			cnt = psmt.executeUpdate();
+//			
+//			
+//			if(cnt>0) { // 앞의 sql 문이 실행되면 cnt_date 컬럼 값에도 1 증가 시키기
+//				String cntdate_plus = "update WORKER_MoHp set CNT_DATE = "
+//									+ "(select cnt_date from worker_mohp where id = ?)+1 where id = ?";
+//				psmt = conn.prepareStatement(cntdate_plus);
+//				
+//				psmt.setString(1, dto.getId());
+//				psmt.setString(2, dto.getId());
+//				
+//				psmt.executeUpdate();
+//				System.out.println("MONEY가 +50 증가 했습니다!");				
+//			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,7 +140,7 @@ public class SelfPlusDAO {
 			close();
 		}
 		
-		return cnt; // 실행여부 리털
+		return pdto; // 실행여부 리털
 	}
 	// ======================== 자기계발서 읽기 ========================================
 	
@@ -155,8 +177,8 @@ public class SelfPlusDAO {
 			
 				System.out.println("Money가 +" + ran +" 증가 하였습니다!");
 			}
-			pdto.setCnt(cnt); // 실행 여부와 랜덤수 ran pdto로 묶어 반환위한 과정
-			pdto.setRan(ran);
+//			pdto.setCnt(cnt); // 실행 여부와 랜덤수 ran pdto로 묶어 반환위한 과정
+//			pdto.setRan(ran);
 		
 			
 		} catch (Exception e) {
