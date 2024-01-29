@@ -11,6 +11,7 @@ public class SelfPlusDAO {
 	private Connection conn =null;
 	private PreparedStatement psmt =null;
 	private ResultSet rs = null;
+	PlayDTO pdto = new PlayDTO();
 	
 	public void getConn() {
 		
@@ -42,7 +43,45 @@ public class SelfPlusDAO {
 	}
 	
 	
-	public int readBook(PlayDTO dto) { // 자기계발서 읽기 선택시 money가 50 증가
+//  =============  main 출력 클래스에서 갱신된 테이블 값 받아오기 위한 메서드  ==================
+	
+			public PlayDTO save(String id) {
+				
+				
+				try {
+					getConn();
+					
+					// sql 문 적기!!
+					
+					String sql = "select * from worker_mohp where id = ? ";
+					
+					psmt = conn.prepareStatement(sql); //sql 넘겨주기!
+					
+					psmt.setString(1,id); // --> 매개변수로 id 받은 값으로 쿼리문 실행
+
+					rs = psmt.executeQuery();
+					
+					if(rs.next()) { // 실행 됐을 때 pdto에 id, hp, money 값 setter 이용해 값을 초기화 해줌
+						pdto.setId(rs.getString(1));
+						pdto.setHp(rs.getInt(2));
+						pdto.setMoney(rs.getInt(3));
+					
+					}
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				
+				} finally {
+					close();
+				}
+			
+				return pdto; // pdto = id, hp, money 담긴 상태로 리텅
+			}
+		
+	
+	// ========== selfPlus =====================
+	
+	public PlayDTO selfPlus(PlayDTO dto) { // 
 			
 		int cnt = 0;
 		
@@ -50,13 +89,13 @@ public class SelfPlusDAO {
 			
 			getConn();
 			
-			String sql = "update WORKER_MoHp set MONEY = "
-						+ "(select money from worker_mohp where id = ?)+50 where id = ?";
+			String sql = "update WORKER_MoHp set  hp= ?,money =?  where id = ? ";
 			
 			psmt = conn.prepareStatement(sql);
 			
-			psmt.setString(1, dto.getId());
-			psmt.setString(2, dto.getId());
+			psmt.setInt(1, dto.getHp());
+			psmt.setInt(2, dto.getMoney());
+			psmt.setInt(2, dto.getMoney());
 			cnt = psmt.executeUpdate();
 			
 			

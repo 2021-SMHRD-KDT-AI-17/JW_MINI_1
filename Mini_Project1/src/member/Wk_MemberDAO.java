@@ -47,10 +47,10 @@ public class Wk_MemberDAO {
 	public PlayDTO wkLogin(Wk_MemberDTO mdto,int login_Or_Update_Delete) {
 		//입력값이 1이면 로그인 2면 수정 3이면 삭제
 	    try {
-	        String sql = "SELECT w.id, wm.hp, wm.money, wm.cnt_date " +
-	                     "FROM worker w " +
-	                     "JOIN worker_mohp wm ON w.id = wm.id " +
-	                     "WHERE w.id = ? AND w.pw = ?";
+	    	String sql = "SELECT w.id, wm.hp, wm.money, wm.cnt_date, wm.sum_opp, wm.work_opp " +
+	                "FROM worker w " +
+	                "JOIN worker_mohp wm ON w.id = wm.id " +
+	                "WHERE w.id = ? AND w.pw = ?";
 	        getConn();
 	        psmt = conn.prepareStatement(sql);
 	        psmt.setString(1, mdto.getId());
@@ -65,6 +65,8 @@ public class Wk_MemberDAO {
 					pdto.setHp(rs.getInt(2));
 					pdto.setMoney(rs.getInt(3));
 					pdto.setCnt_date(rs.getInt(4));
+					pdto.setSum_opp(rs.getInt(5));
+					pdto.setWork_opp(rs.getInt(6));
 				} else if (login_Or_Update_Delete == 2 || login_Or_Update_Delete == 3) {
 					System.out.println("정보확인 성공");
 					pdto.setId(mdto.getId());

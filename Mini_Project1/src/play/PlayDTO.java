@@ -6,23 +6,25 @@ public class PlayDTO {
 	private int hp;
 	private int cnt_date;
 	private String id;
-	private int ran;
-	private int cnt;
+	private int sum_opp;
+	private int work_opp;
 	
 	
-	public int getRan() {
-		return ran;
+	public int getSum_opp() {
+		return sum_opp;
 	}
-	public void setRan(int ran) {
-		this.ran = ran;
+	public void setSum_opp(int sum_opp) {
+		this.sum_opp = sum_opp;
 	}
-	public int getCnt() {
-		return cnt;
+	public int getWork_opp() {
+		return work_opp;
 	}
-	public void setCnt(int cnt) {
-		this.cnt = cnt;
+	public void setWork_opp(int work_opp) {
+		this.work_opp = work_opp;
 	}
 	
+	
+
 	
 	
 	public int getMoney() {

@@ -81,6 +81,9 @@ public class WorkDAO {
 						pdto.setId(rs.getString(1));
 						pdto.setHp(rs.getInt(2));
 						pdto.setMoney(rs.getInt(3));
+						pdto.setCnt_date(rs.getInt(4));
+						pdto.setSum_opp(rs.getInt(5));
+						pdto.setWork_opp(rs.getInt(6));
 					
 					}
 					
@@ -105,13 +108,16 @@ public class WorkDAO {
 					
 					// sql 문 적기!!
 					
-					String sql = "update WORKER_MoHp set  hp= ?,money =?  where id = ? ";
+					String sql = "update WORKER_MoHp set  hp= ?,money =?, sum_opp = ?, work_opp= ?, cnt_date =? where id = ? ";
 					
 					psmt = conn.prepareStatement(sql); //sql 넘겨주기!
 					
 					psmt.setInt(1, dto.getHp()); // main 출력 클래스에서 받아온 dto들의 값을 가져옴
 					psmt.setInt(2, dto.getMoney());
-					psmt.setString(3, dto.getId());
+					psmt.setInt(3, dto.getSum_opp());
+					psmt.setInt(4, dto.getWork_opp());
+					psmt.setInt(5, dto.getCnt_date());	
+					psmt.setString(6, dto.getId());
 						
 					cnt  = psmt.executeUpdate();
 					
