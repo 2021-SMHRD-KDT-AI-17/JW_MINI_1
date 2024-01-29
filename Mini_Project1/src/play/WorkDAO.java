@@ -58,7 +58,31 @@ public class WorkDAO {
 			// ===========DB 연결 종료
 			//--------------------------------------------------------------------------
 	
+			public void hp(String id) {
+				
+				
+				try {
+					getConn();
+					
+					// sql 문 적기!!
+					
+					String sql = "update worker_mohp set hp = 100  where id = ? ";
+					
+					psmt = conn.prepareStatement(sql); //sql 넘겨주기!
+					
+					psmt.setString(1,id); // --> 매개변수로 id 받은 값으로 쿼리문 실행
+
+					psmt.executeUpdate();
+
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				
+				} finally {
+					close();
+				}
 			
+		}
 	//  =============  main 출력 클래스에서 갱신된 테이블 값 받아오기 위한 메서드  ==================
 			
 			public PlayDTO save(String id) {
