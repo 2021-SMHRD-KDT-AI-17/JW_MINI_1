@@ -105,8 +105,8 @@ public class main_윤정원 {
 									int cnt = wdao.overtime(pdto);
 									if(cnt>0) {
 										System.out.println("야근 당첨!!");
-										System.out.println("이름 : " + pdto.getId() + "HP : "+ (pdto.getHp()-20)
-																+ "Money : " + (pdto.getMoney()+20));
+										System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ (pdto.getHp()-20)
+														 + " \t"+ "Money : " + (pdto.getMoney()+20));
 										count++;
 									}
 								}else if(r==2) { // 2일때는 업무실수
@@ -115,8 +115,8 @@ public class main_윤정원 {
 									
 									if(cnt>0) {
 										System.out.println("업무 실수!!");
-										System.out.println("이름 : " + pdto.getId() + "HP : "+ (pdto.getHp()-10)
-												+ "Money : " + (pdto.getMoney()-10));
+										System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ (pdto.getHp()-10)
+												+ " \t" + "Money : " + (pdto.getMoney()-10));
 										count++;
 									}
 								}else if(r==3) { // 3일때는 혼나기
@@ -125,8 +125,8 @@ public class main_윤정원 {
 									
 									if(cnt>0) {
 										System.out.println("상사한테 혼나기!!");
-										System.out.println("이름 : " + pdto.getId() + "HP : "+ (pdto.getHp()-20)
-												+ "Money : " + pdto.getMoney());
+										System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ (pdto.getHp()-20)
+												+ " \t" + "Money : " + pdto.getMoney());
 										count++;
 									}
 									
@@ -136,8 +136,8 @@ public class main_윤정원 {
 									
 									if(cnt>0) {
 										System.out.println("룰루랄라 즐겁게 일하기~~ ");
-										System.out.println("이름 : " + pdto.getId() + "HP : "+ pdto.getHp()
-												+ "Money : " + (pdto.getMoney()+15));
+										System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+												+ " \t" + "Money : " + (pdto.getMoney()+15));
 										count++;
 									}
 									
@@ -158,23 +158,23 @@ public class main_윤정원 {
 									int cnt = sdao.readBook(pdto); // SelfDAO의 readbook 메서드에 pdto 정보 매개변수로 넘기고
 																  //  return 받을 값 변수 정해주기 
 									if(cnt >0) {
-										System.out.println("이름 : " + pdto.getId() + " HP : " + pdto.getHp()
-										+ " MONEY : " + (pdto.getMoney()+50));	
+										System.out.println("이름 : " + pdto.getId() + " \t" +  " HP : " + pdto.getHp()
+										+ " \t" + " MONEY : " + (pdto.getMoney()+50));	
 									}
 								}else if(input ==2) {
 									
 									PlayDTO consult = new PlayDTO(); // SelfDAO의 consult 메소드 실행 결과값 받아올 dto
 									consult = sdao.consult(pdto); // consult메소드에서 발생시킨 난수 ran, cnt 가져옴
 									if(consult.getCnt()>0) {
-										System.out.println("이름 : " + pdto.getId() + " HP : " + pdto.getHp()
-										+ " MONEY : " + (pdto.getMoney() + consult.getRan()));	
+										System.out.println("이름 : " + pdto.getId() +  " \t" + " HP : " + pdto.getHp()
+										+ " \t" + " MONEY : " + (pdto.getMoney() + consult.getRan()));	
 									}
 								}else if(input ==3) {  
 									int cnt = sdao.property(pdto); //SelfDAO의 property 메서드에 pdto 정보 매개변수로 넘기고
 																  //  return 받을 값 변수 정해주기
 									if(cnt >0) {
-										System.out.println("이름 : " + pdto.getId() + " HP : " + pdto.getHp()
-										+ " MONEY : " + (pdto.getMoney()+20));	
+										System.out.println("이름 : " + pdto.getId() + " \t" + " HP : " + pdto.getHp()
+										+ " \t" + " MONEY : " + (pdto.getMoney()+20));	
 									}
 								}
 							
@@ -190,8 +190,8 @@ public class main_윤정원 {
 									int cnt= rdao.sleep(pdto); // GoTohomeDAO의 gobus 메서드에 pdto 정보 매개변수로 넘기고
 															 //  return 받을 값 변수 정해주기
 									if(cnt> 0) { // 
-										System.out.println("이름 : "  + pdto.getId() +  " HP : " + 
-												(pdto.getHp()+40) + " MONEY : " + pdto.getMoney());
+										System.out.println("이름 : "  + pdto.getId() + " \t" +  " HP : " + 
+												(pdto.getHp()+40) + " \t" + " MONEY : " + pdto.getMoney());
 										System.out.println("취침 했습니다");
 										System.out.println();
 									
@@ -201,8 +201,8 @@ public class main_윤정원 {
 									int cnt= rdao.shopping(pdto); //GoTohomeDAO의 gowalk 메서드에 pdto 정보 매개변수로 넘기고
 																//  return 받을 값 변수 정해주기
 									if(cnt > 0) {
-										System.out.println("이름 : "  + pdto.getId() +  " HP : " + 
-												pdto.getHp()+ " MONEY :  " + (pdto.getMoney()-30));
+										System.out.println("이름 : "  + pdto.getId() + " \t" +  " HP : " + 
+												pdto.getHp()+ " \t" + " MONEY :  " + (pdto.getMoney()-30));
 										System.out.println("쇼핑 했습니다");
 										System.out.println();
 									
@@ -212,8 +212,8 @@ public class main_윤정원 {
 									int cnt= rdao.eat(pdto); //	GoTohomeDAO의 gotaxi 메서드에 pdto 정보 매개변수로 넘기고
 																//  return 받을 값 변수 정해주기
 									if(cnt > 0) {
-										System.out.println("이름 : "  + pdto.getId() +  " HP : " + 
-												(pdto.getHp()+30) + " MONEY :  " + (pdto.getMoney()-20));
+										System.out.println("이름 : "  + pdto.getId() +  " \t" + " HP : " + 
+												(pdto.getHp()+30) + " \t" + " MONEY :  " + (pdto.getMoney()-20));
 										System.out.println("식사 했습니다");
 										System.out.println();
 										
@@ -234,8 +234,8 @@ public class main_윤정원 {
 									int cnt= gdao.goBus(pdto); // GoTohomeDAO의 gobus 메서드에 pdto 정보 매개변수로 넘기고
 															 //  return 받을 값 변수 정해주기
 									if(cnt> 0) { // 
-										System.out.println("이름 : "  + pdto.getId() +  " HP : " + 
-												(pdto.getHp()-20) + " MONEY : " + pdto.getMoney());
+										System.out.println("이름 : "  + pdto.getId() + " \t" +  " HP : " + 
+												(pdto.getHp()-20) + " \t" +  " MONEY : " + pdto.getMoney());
 										System.out.println("퇴근을 완료했습니다");
 										System.out.println();
 										break;
@@ -245,8 +245,8 @@ public class main_윤정원 {
 									int cnt= gdao.goWalk(pdto); //GoTohomeDAO의 gowalk 메서드에 pdto 정보 매개변수로 넘기고
 																//  return 받을 값 변수 정해주기
 									if(cnt > 0) {
-										System.out.println("이름 : "  + pdto.getId() +  " HP : " + 
-												(pdto.getHp()-20)+ " MONEY :  " + pdto.getMoney());
+										System.out.println("이름 : "  + pdto.getId() + " \t" + " HP : " + 
+												(pdto.getHp()-20)+  " \t" + " MONEY :  " + pdto.getMoney());
 										System.out.println("퇴근을 완료했습니다");
 										System.out.println();
 										break;
@@ -256,8 +256,8 @@ public class main_윤정원 {
 									int cnt= gdao.goTaxi(pdto); //	GoTohomeDAO의 gotaxi 메서드에 pdto 정보 매개변수로 넘기고
 																//  return 받을 값 변수 정해주기
 									if(cnt > 0) {
-										System.out.println("이름 : "  + pdto.getId() +  " HP : " + 
-												pdto.getHp() + " MONEY :  " + (pdto.getMoney()-50));
+										System.out.println("이름 : "  + pdto.getId() + " \t" + " HP : " + 
+												pdto.getHp() + " \t" + " MONEY :  " + (pdto.getMoney()-50));
 										System.out.println("퇴근을 완료했습니다");
 										System.out.println();
 										break;
