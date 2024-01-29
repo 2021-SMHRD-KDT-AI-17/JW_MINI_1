@@ -12,6 +12,7 @@ public class WorkDAO {
 			private Connection conn = null;
 			private PreparedStatement psmt = null;
 			private ResultSet rs = null;
+			PlayDTO pdto = new PlayDTO();
 			
 			// 공통적으로 작성하고 있는 코드를 메서드로 분리!!
 			public void getConn() {
@@ -32,11 +33,7 @@ public class WorkDAO {
 			           // - Connection객체: DB연결, 종료, SQL실행 등의 기능을 제공하는 객체
 			           conn = DriverManager.getConnection(url, user, password);
 			           
-			           if(conn != null) {
-			              System.out.println("DB연결 성공!");
-			           }else {
-			              System.out.println("DB연결 실ㅍㅐ...");
-			           }
+
 				} catch (Exception e) {
 					e.printStackTrace();  //오류 출력!!
 				}
@@ -56,13 +53,50 @@ public class WorkDAO {
 		        catch (SQLException e) {
 		           e.printStackTrace();
 		        }
-		        System.out.println("DB연결 종료!");
+
 		     }
 			// ===========DB 연결 종료
 			//--------------------------------------------------------------------------
 	
 			
-			public int overtime(PlayDTO dto) {
+	//  =============  main 출력 클래스에서 갱신된 테이블 값 받아오기 위한 메서드  ==================
+			
+			public PlayDTO save(String id) {
+				
+				
+				try {
+					getConn();
+					
+					// sql 문 적기!!
+					
+					String sql = "select * from worker_mohp where id = ? ";
+					
+					psmt = conn.prepareStatement(sql); //sql 넘겨주기!
+					
+					psmt.setString(1,id); // --> 매개변수로 id 받은 값으로 쿼리문 실행
+
+					rs = psmt.executeQuery();
+					
+					if(rs.next()) { // 실행 됐을 때 pdto에 id, hp, money 값 setter 이용해 값을 초기화 해줌
+						pdto.setId(rs.getString(1));
+						pdto.setHp(rs.getInt(2));
+						pdto.setMoney(rs.getInt(3));
+					
+					}
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				
+				} finally {
+					close();
+				}
+			
+				return pdto; // pdto = id, hp, money 담긴 상태로 리텅
+			}
+		
+			//========== 야근 선택!!!		
+			
+			public PlayDTO  overtime(PlayDTO dto) {
 				
 				int cnt =0;
 				
@@ -71,20 +105,19 @@ public class WorkDAO {
 					
 					// sql 문 적기!!
 					
-					String sql = "update WORKER_MoHp set hp = (select hp from worker_MoHp where id = ?)-20, "
-						     + "money = (select money from worker_MoHp where id = ?) + 20 "
-						     + "where id = ? ";
+					String sql = "update WORKER_MoHp set  hp= ?,money =?  where id = ? ";
 					
 					psmt = conn.prepareStatement(sql); //sql 넘겨주기!
 					
-					psmt.setString(1, dto.getId()); // -->  ?  채우기!
-					psmt.setString(2, dto.getId());
+					psmt.setInt(1, dto.getHp()); // main 출력 클래스에서 받아온 dto들의 값을 가져옴
+					psmt.setInt(2, dto.getMoney());
 					psmt.setString(3, dto.getId());
-					
-					cnt = psmt.executeUpdate(); //--> 리턴 받아야하는게 cnt!!
+						
+					cnt  = psmt.executeUpdate();
 					
 					if(cnt>0) {
-						System.out.println("HP가 -20 감소하고, money가 +20 증가 하였습니다!!!");
+						pdto = save(dto.getId()); // save 함수에 main 출력 클래스에서 받아온 id 값을
+												  //  매개변수로 넘겨주고 실행
 					}
 					
 					
@@ -95,71 +128,35 @@ public class WorkDAO {
 					close();
 				}
 			
-				return cnt;
+				return pdto; //  save에서 실행하고 넘겨받은 pdto 리턴
 			}
-			//========== 야근 선택!!!
 			
-			public int mistake(PlayDTO dto) {
-				
-				int cnt =0;
-				
-				try {
-					getConn();
-					
-					// sql 문 적기!!
-					
-					String sql = "update WORKER_MoHp set hp = (select hp from worker_MoHp where id = ?)-10, "
-							     + "money = (select money from worker_MoHp where id = ?) - 10 "
-							     + "where id = ? ";
-					
-					psmt = conn.prepareStatement(sql); //sql 넘겨주기!
-					
-					psmt.setString(1, dto.getId()); // -->  ?  채우기!
-					psmt.setString(2, dto.getId());
-					psmt.setString(3, dto.getId());
-					
-					cnt = psmt.executeUpdate(); //--> 리턴 받아야하는게 cnt!!
-					
-					if(cnt>0) {
-						System.out.println("HP가 -10 감소하고, money가 -10 감소 하였습니다!!!");
-					}
-					
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				
-				} finally {
-					close();
-				}
-			
-				return cnt;
-			}
 			//========== 업무 실수 선택!!!
-			
-			
-			public int trouble(PlayDTO dto) {
 				
-				int cnt =0;
+			
+			public PlayDTO mistake(PlayDTO dto) {
+			
+				int cnt = 0;
 				
 				try {
 					getConn();
 					
 					// sql 문 적기!!
 					
-					String sql = "update WORKER_MoHp set hp = (select hp from worker_MoHp where id = ?)-20 "
-						     + "where id = ? ";
+					String sql = "update WORKER_MoHp set  hp= ?,money =?  where id = ? ";
 					
 					psmt = conn.prepareStatement(sql); //sql 넘겨주기!
 					
-					psmt.setString(1, dto.getId()); // -->  ?  채우기!
-					psmt.setString(2, dto.getId());
-					
-					cnt = psmt.executeUpdate(); //--> 리턴 받아야하는게 cnt!!
+					psmt.setInt(1, dto.getHp()); // main 출력 클래스에서 받아온 dto들의 값을 가져옴
+					psmt.setInt(2, dto.getMoney());
+					psmt.setString(3, dto.getId());
+						
+					cnt  = psmt.executeUpdate();
 					
 					if(cnt>0) {
-						System.out.println("HP가 -20 감소 했습니다!!!!!");
+						pdto = save(dto.getId()); // save 함수에 main 출력 클래스에서 받아온 id 값을
+												  //  매개변수로 넘겨주고 실행
 					}
-					
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -168,12 +165,12 @@ public class WorkDAO {
 					close();
 				}
 			
-				return cnt;
+				return pdto;
 			}
-			//========== 혼나기 선택!!!
+	
+			//========== 혼나기 선택!!! 		
 			
-			
-			public int normalWork(PlayDTO dto) {
+			public PlayDTO trouble(PlayDTO dto) {
 				
 				int cnt =0;
 				
@@ -181,22 +178,20 @@ public class WorkDAO {
 					getConn();
 					
 					// sql 문 적기!!
-					
-					String sql = "update WORKER_MoHp set money = (select money from worker_MoHp where id = ?)+15 "
-						     + "where id = ? ";
+					String sql = "update WORKER_MoHp set  hp= ? where id = ? ";
 					
 					psmt = conn.prepareStatement(sql); //sql 넘겨주기!
 					
-					psmt.setString(1, dto.getId()); // -->  ?  채우기!
+					psmt.setInt(1, dto.getHp()); // main 출력 클래스에서 받아온 dto들의 값을 가져옴
 					psmt.setString(2, dto.getId());
-					
-					cnt = psmt.executeUpdate(); //--> 리턴 받아야하는게 cnt!!
+						
+					cnt  = psmt.executeUpdate();
 					
 					if(cnt>0) {
-						System.out.println("MONEY가 +15 증가 했습니다!!!");
+						pdto = save(dto.getId()); // save 함수에 main 출력 클래스에서 받아온 id 값을
+												  //  매개변수로 넘겨주고 실행
 					}
-					
-					
+						
 				} catch (Exception e) {
 					e.printStackTrace();
 				
@@ -204,9 +199,45 @@ public class WorkDAO {
 					close();
 				}
 			
-				return cnt;
+				return pdto;
 			}
+			
 			//========== 정상업무 선택!!!
+			
+			public PlayDTO normalWork(PlayDTO dto) {
+				
+				int cnt =0;
+				
+				try {
+					getConn();
+					
+					// sql 문 적기!!
+					
+					String sql = "update WORKER_MoHp set money = ? where id = ? ";
+					
+					psmt = conn.prepareStatement(sql); //sql 넘겨주기!
+					
+					psmt.setInt(1, dto.getMoney()); // main 출력 클래스에서 받아온 dto들의 값을 가져옴
+					psmt.setString(2, dto.getId());
+					
+					cnt = psmt.executeUpdate(); 
+					
+					if(cnt>0) {
+						pdto = save(dto.getId()); // save 함수에 main 출력 클래스에서 받아온 id 값을
+						  //  매개변수로 넘겨주고 실행
+					}
+					
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				
+				} finally {
+					close();
+				}
+			
+				return pdto;
+			}
+		
 			
 			
 			
