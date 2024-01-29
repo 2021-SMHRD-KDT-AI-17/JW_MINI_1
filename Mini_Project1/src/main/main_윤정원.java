@@ -107,13 +107,14 @@ public class main_윤정원 {
 								if(sum_opp <= 0) {
 									
 									sum_opp = 5;
-									work_opp = 3;
+									work_opp =3;
 									pdto.setCnt_date(cnt_date=cnt_date+1);  
+									pdto.setSum_opp(sum_opp);
+									pdto.setWork_opp(work_opp);
+									
 									pdto = wdao.overtime(pdto);
 									System.out.println("기회가 모두 소진됐습니다! 다시 로그인 해주세요");
 									break;
-									
-									
 								}
 								
 								if(work_opp <= 0) {
@@ -254,10 +255,12 @@ public class main_윤정원 {
 								if(sum_opp <= 0) {
 									sum_opp = 5;
 									work_opp =3;
-									
 									pdto.setCnt_date(cnt_date=cnt_date+1);  
+									pdto.setSum_opp(sum_opp);
+									pdto.setWork_opp(work_opp);
+									
 									pdto = wdao.overtime(pdto);
-									System.out.println("오늘 하루 선택할 수 있는 기회가 마감되었습니다");
+									System.out.println("기회가 모두 소진됐습니다! 다시 로그인 해주세요");
 									break;
 								}
 								
@@ -349,15 +352,23 @@ public class main_윤정원 {
 		                   
 		                    	  if(sum_opp <= 0) {
 										sum_opp = 5;
-										work_opp = 3;
+										work_opp =3;
 										pdto.setCnt_date(cnt_date=cnt_date+1);  
-										pdto = wdao.overtime(pdto);
+										pdto.setSum_opp(sum_opp);
+										pdto.setWork_opp(work_opp);
 										
+										pdto = wdao.overtime(pdto);
+										System.out.println("기회가 모두 소진됐습니다! 다시 로그인 해주세요");
+										break;
 									}
 		                    	  
-		                         System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
-		                          + " \t"+ "Money : " +pdto.getMoney());
-		                         pdto = mdao.wkLogin(logdto, 1);
+		                    	  
+		                    	   System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+						 							+ " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
+						 							+ pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp());
+		                         
+		                    	  
+		                         
 		                         System.out.println("[1]취침 [2] 쇼핑 [3]식사");
 		                         
 		                         int input = sc.nextInt();
@@ -443,6 +454,20 @@ public class main_윤정원 {
 		                      
 		                           
 		                      if(select  ==4 ) { // ** 퇴근하기 
+		                    	  
+		                    	  if(sum_opp <= 0) {
+										sum_opp = 5;
+										work_opp =3;
+										pdto.setCnt_date(cnt_date=cnt_date+1);  
+										pdto.setSum_opp(sum_opp);
+										pdto.setWork_opp(work_opp);
+										
+										pdto = wdao.overtime(pdto);
+										System.out.println("기회가 모두 소진됐습니다! 다시 로그인 해주세요");
+										break;
+									}
+		                    	  
+		                    
 		                         System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
 		                         					+ " \t"+ "Money : " +pdto.getMoney());
 		                         pdto = mdao.wkLogin(logdto, 1);
