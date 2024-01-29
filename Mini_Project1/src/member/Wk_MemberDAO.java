@@ -25,8 +25,8 @@ public class Wk_MemberDAO {
 			String user = "campus_23K_AI17_p1_4"; 
 			String password = "smhrd4"; 
 			conn = DriverManager.getConnection(url, user, password); 
-			if (conn != null) {System.out.println("\t \t \t \t \t \t \t \t \t DB연결 성공");
-			} else {System.out.println("DB연결실패");	}
+			if (conn != null) {System.out.println("");
+			} else {System.out.println("");	}
 		} catch (Exception e) {	e.printStackTrace();}
 	}//getConn()
 
@@ -39,7 +39,7 @@ public class Wk_MemberDAO {
 			if (conn != null) {
 				conn.close();}
 		} catch (Exception e) {e.printStackTrace();	}
-		System.out.println("\t \t \t \t \t \t \t \t \t 디비Close.");
+		System.out.println("");
 	}//closd()
 
 //============================= 로  그  인====================================	
