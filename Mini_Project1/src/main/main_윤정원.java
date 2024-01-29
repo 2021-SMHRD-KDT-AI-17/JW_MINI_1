@@ -244,150 +244,171 @@ public class main_윤정원 {
 									}
 									
 								}
-							
-								
-							}
+							if(select == 2) { // ** 자기계발 하기
+		                         System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+		                          + " \t"+ "Money : " +pdto.getMoney());
+		                         pdto = mdao.wkLogin(logdto, 1);
+		                         System.out.println("[1]자기계발서 읽기 [2] 1:1 컨설턴트 받기 [3]임장 다니기");
+		                         int input = sc.nextInt();
+		                         
+		                         if(input ==1) { // 1 일때 자기계발서 money +30
+		                            
+		                            money +=30;
+		                            pdto.setMoney(money);
+		          
+		                   
+		                            pdto = wdao.overtime(pdto);
+		                         
+		                               System.out.println("자기계발!! money +30 증가");
+		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+		                                            + " \t"+ "Money : " +pdto.getMoney());   
+		                            
+		                            
+		                         }else if(input ==2) {  // 2 1:1 컨설트 받기  money +1~20 <랜덤>
+		                            Random rd = new Random();
+		                            int consultrd=rd.nextInt(20)+1;
+		                            money +=consultrd;
+		                            pdto.setMoney(money);
+		          
+		                   
+		                            pdto = wdao.overtime(pdto);
+		                         
+		                               System.out.println("1:1 컨설트 받기!! money "+"+"+ consultrd  +" 증가");
+		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+		                                            + " \t"+ "Money : " +pdto.getMoney());   
+		                            
+		                         }else if(input ==3) {  // 3 임장다니기 money +20
+		                            money +=20;
+		                            pdto.setMoney(money);
+		          
+		                   
+		                            pdto = wdao.overtime(pdto);
+		                         
+		                               System.out.println("임장다니기!! money +20 증가");
+		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+		                                            + " \t"+ "Money : " +pdto.getMoney());
+		                            }
+		                         }
+		                      
+		                      
+		                      
+		                      if (select == 3) { // ** 휴식
+		                         System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+		                          + " \t"+ "Money : " +pdto.getMoney());
+		                         pdto = mdao.wkLogin(logdto, 1);
+		                         System.out.println("[1]취침 [2] 쇼핑 [3]식사");
+		                         
+		                         int input = sc.nextInt();
+		                         
+		                         if(input ==1) { // 취침 선택시  hp + 40
+		                            hp +=40;
+		                            pdto.setHp(hp);
+
+		                            pdto = wdao.overtime(pdto);
+		                         
+		                               System.out.println("취침!! hp +40 증가");
+		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+		                                            + " \t"+ "Money : " +pdto.getMoney());
+		                            
+		                            }
+		                         
+		                         else if(input ==2) { // 쇼핑 선택시  money 랜덤 일단 -1~-20
+		                            Random rd1 = new Random();
+		                            int shoprd=rd1.nextInt(20)+1;
+		                            
+		                            
+		                            money -=shoprd;
+		                            pdto.setMoney(money);
+		          
+		                   
+		                            pdto = wdao.overtime(pdto);
+		                         
+		                               System.out.println("쇼핑!! money " +"-"+shoprd+ " 감소");
+		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+		                                            + " \t"+ "Money : " +pdto.getMoney());
+		                            
+		                            }
+		                         
+		                         else if(input == 3) { // 식사 선택시  hp +30  money -20
+		                            hp +=30;
+		                            money -=20;
+		                            pdto.setHp(hp);
+		                            pdto.setMoney(money);
+		                            
+		                            pdto = wdao.overtime(pdto);
+		                         
+		                               System.out.println("식사!! hp +30 증가, money -20 감소");
+		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+		                                            + " \t"+ "Money : " +pdto.getMoney());
+		                         }
+		                         
+		                      }
+		                      
+		                      
+		                   
+		                      
+		                      if(select  ==4 ) { // ** 퇴근하기 
+		                         System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+		                          + " \t"+ "Money : " +pdto.getMoney());
+		                         pdto = mdao.wkLogin(logdto, 1);
+		                         System.out.println(" [1]버스타기 [2]걸어가기 [3]택시타기"); // 로그인 성공 후 선택
+		                         int input = sc.nextInt();
+		                         
+		                         if(input ==1) { // 버스 타기 선택시  hp -20 
+		                            hp -=20;
+		                            pdto.setHp(hp);
+
+		                            pdto = wdao.overtime(pdto);
+		                         
+		                               System.out.println("버스 타기!! hp -20 감소");
+		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+		                                            + " \t"+ "Money : " +pdto.getMoney());
+		                               break;
+		                            }
+		                         
+		                         else if(input ==2) { // 걸어가기 선택시  hp -20
+		                            hp -=20;
+		                            pdto.setHp(hp);
+
+		                            pdto = wdao.overtime(pdto);
+		                         
+		                               System.out.println("걸어가기!! hp -20 감소");
+		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+		                                            + " \t"+ "Money : " +pdto.getMoney());
+		                               
+		                               break;
+		                            }
+		                         
+		                         else if(input == 3) { // 택시타기 선택시   money -50
+		                            money -=50;
+		                            pdto.setMoney(money);
+		          
+		                   
+		                            pdto = wdao.overtime(pdto);
+		                         
+		                               System.out.println("택시타기!! money -50 감소");
+		                               System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
+		                                            + " \t"+ "Money : " +pdto.getMoney());
+		                               break;
+		                         }       
+		                      }
+		                                        
+		                   }
+		             }
+				}
+					                
+		
+				if(choice == 3) { // ** 랭킹보기
+					
+					System.out.println("10위까지의 랭킹 출력");
+				
+					mdao.workerRank();
 						
-							
-							
-//							if(select == 2) { // ** 자기계발 하기
-//								pdto = mdao.wkLogin(logdto, 1);
-//								System.out.println("[1]자기계발서 읽기 [2] 1:1 컨설턴트 받기 [3]임장 다니기");
-//								int input = sc.nextInt();
-//								
-//								if(input ==1) {
-//									pdto.setId(logId); // 로그인한 id를 pdto에 담기
-//									
-//									int cnt = sdao.readBook(pdto); // SelfDAO의 readbook 메서드에 pdto 정보 매개변수로 넘기고
-//																  //  return 받을 값 변수 정해주기 
-//									if(cnt >0) {
-//										System.out.println("이름 : " + pdto.getId() + " \t" +  " HP : " + pdto.getHp()
-//										+ " \t" + " MONEY : " + (pdto.getMoney()+50));	
-//									}
-//								}else if(input ==2) {
-//									
-//									PlayDTO consult = new PlayDTO(); // SelfDAO의 consult 메소드 실행 결과값 받아올 dto
-//									consult = sdao.consult(pdto); // consult메소드에서 발생시킨 난수 ran, cnt 가져옴
-//									if(consult.getCnt()>0) {
-//										System.out.println("이름 : " + pdto.getId() +  " \t" + " HP : " + pdto.getHp()
-//										+ " \t" + " MONEY : " + (pdto.getMoney() + consult.getRan()));	
-//									}
-//								}else if(input ==3) {  
-//									int cnt = sdao.property(pdto); //SelfDAO의 property 메서드에 pdto 정보 매개변수로 넘기고
-//																  //  return 받을 값 변수 정해주기
-//									if(cnt >0) {
-//										System.out.println("이름 : " + pdto.getId() + " \t" + " HP : " + pdto.getHp()
-//										+ " \t" + " MONEY : " + (pdto.getMoney()+20));	
-//									}
-//								}
-//							
-//							}
-//							
-//							if (select == 3) { // ** 휴식
-//								pdto = mdao.wkLogin(logdto, 1);
-//								System.out.println("[1]취침 [2] 쇼핑 [3]식사");
-//								
-//								int input = sc.nextInt();
-//								
-//								if(input ==1) { // 취침 선택시
-//									int cnt= rdao.sleep(pdto); // GoTohomeDAO의 gobus 메서드에 pdto 정보 매개변수로 넘기고
-//															 //  return 받을 값 변수 정해주기
-//									if(cnt> 0) { // 
-//										System.out.println("이름 : "  + pdto.getId() + " \t" +  " HP : " + 
-//												(pdto.getHp()+40) + " \t" + " MONEY : " + pdto.getMoney());
-//										System.out.println("취침 했습니다");
-//										System.out.println();
-//									
-//									}
-//								}
-//								else if(input ==2) { // 쇼핑 선택시
-//									int cnt= rdao.shopping(pdto); //GoTohomeDAO의 gowalk 메서드에 pdto 정보 매개변수로 넘기고
-//																//  return 받을 값 변수 정해주기
-//									if(cnt > 0) {
-//										System.out.println("이름 : "  + pdto.getId() + " \t" +  " HP : " + 
-//												pdto.getHp()+ " \t" + " MONEY :  " + (pdto.getMoney()-30));
-//										System.out.println("쇼핑 했습니다");
-//										System.out.println();
-//									
-//									}
-//								}
-//								else if(input == 3) { // 식사 선택시
-//									int cnt= rdao.eat(pdto); //	GoTohomeDAO의 gotaxi 메서드에 pdto 정보 매개변수로 넘기고
-//																//  return 받을 값 변수 정해주기
-//									if(cnt > 0) {
-//										System.out.println("이름 : "  + pdto.getId() +  " \t" + " HP : " + 
-//												(pdto.getHp()+30) + " \t" + " MONEY :  " + (pdto.getMoney()-20));
-//										System.out.println("식사 했습니다");
-//										System.out.println();
-//										
-//									}
-//								}
-//								
-//							}
-//							
-//							
-//						
-//							
-//							if(select  ==4 ) { // ** 퇴근하기 
-//								pdto = mdao.wkLogin(logdto, 1);
-//								System.out.println(" [1]버스타기 [2]걸어가기 [3]택시타기"); // 로그인 성공 후 선택
-//								int input = sc.nextInt();
-//								
-//								if(input ==1) { // 버스 타기 선택시
-//									int cnt= gdao.goBus(pdto); // GoTohomeDAO의 gobus 메서드에 pdto 정보 매개변수로 넘기고
-//															 //  return 받을 값 변수 정해주기
-//									if(cnt> 0) { // 
-//										System.out.println("이름 : "  + pdto.getId() + " \t" +  " HP : " + 
-//												(pdto.getHp()-20) + " \t" +  " MONEY : " + pdto.getMoney());
-//										System.out.println("퇴근을 완료했습니다");
-//										System.out.println();
-//										break;
-//									}
-//								}
-//								else if(input ==2) { // 걸어가기 선택시
-//									int cnt= gdao.goWalk(pdto); //GoTohomeDAO의 gowalk 메서드에 pdto 정보 매개변수로 넘기고
-//																//  return 받을 값 변수 정해주기
-//									if(cnt > 0) {
-//										System.out.println("이름 : "  + pdto.getId() + " \t" + " HP : " + 
-//												(pdto.getHp()-20)+  " \t" + " MONEY :  " + pdto.getMoney());
-//										System.out.println("퇴근을 완료했습니다");
-//										System.out.println();
-//										break;
-//									}
-//								}
-//								else if(input == 3) { // 택시타기 선택시
-//									int cnt= gdao.goTaxi(pdto); //	GoTohomeDAO의 gotaxi 메서드에 pdto 정보 매개변수로 넘기고
-//																//  return 받을 값 변수 정해주기
-//									if(cnt > 0) {
-//										System.out.println("이름 : "  + pdto.getId() + " \t" + " HP : " + 
-//												pdto.getHp() + " \t" + " MONEY :  " + (pdto.getMoney()-50));
-//										System.out.println("퇴근을 완료했습니다");
-//										System.out.println();
-//										break;
-//									}
-//								}
-//								
-//							}
-//						
-//							
-//						}
-//				}
-//			}
-//				
-//
-//				if(choice == 3) { // ** 랭킹보기
-//					
-//					System.out.println("10위까지의 랭킹 출력");
-//				
-//					mdao.workerRank();
-//						
-//				}
-//		}	
+				}
+		}	
 				
 	}
-		}
-	}
-}
+	
 }
 	
 			
