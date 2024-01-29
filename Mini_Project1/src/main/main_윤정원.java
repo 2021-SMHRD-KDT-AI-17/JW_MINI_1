@@ -49,7 +49,7 @@ public class main_윤정원 {
          int choice = sc.nextInt();
          
             if(choice ==1 ) { // **회원가입
-               System.out.print(" ID 입력 :");
+               System.out.print(" 이름 입력 :");
                String joinId=sc.next();
                mdto.setId(joinId); // true(중복), false(중복 x)로 리턴 됨
             
@@ -61,10 +61,8 @@ public class main_윤정원 {
                String joinPw=sc.next();
                mdto.setPw(joinPw);
 
-               System.out.print("가입할 닉네임 입력 :");
-               String joinName=sc.next();
-               mdto.setName(joinName);
-            
+          
+
                mdao.wokerJoin(mdto);
             }
             
@@ -91,7 +89,7 @@ public class main_윤정원 {
             	   a.introText(); // 인트로 설명
                    a.gameRule();  // 게임룰 설명
                     
-                  System.out.print("ID : " + pdto.getId() + "\t");
+                  System.out.print("이름 : " + pdto.getId() + "\t");
                   System.out.print("HP : " + pdto.getHp()+"\t");
                   System.out.print("Money : " + pdto.getMoney()+ "\t");
                   System.out.print("근무일수 : " + pdto.getCnt_date()+ "\t");
@@ -354,7 +352,7 @@ public class main_윤정원 {
 			                        pdto.setHp(hp);
 			                        pdto.setMoney(money);
 			                           
-			                        pdto = sdao.selfPlus(pdto);
+			                        pdto = wdao.overtime(pdto);
 	                           
                                      System.out.println(" money "+"+"+ consultrd  +" 증가!");
                                      System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
