@@ -88,7 +88,7 @@ public class Wk_MemberDAO {
 			getConn();
 			String sql = "INSERT ALL " +
 		             "INTO worker(id, pw, name) VALUES(?, ?, ?) " +
-		             "INTO worker_mohp(id, hp, money, cnt_date) VALUES(?, ?, ?, ?) " +
+		             "INTO worker_mohp(id, hp, money, cnt_date,sum_opp,work_opp) VALUES(?, ?, ?, ?,5,3) " +
 		             "SELECT * FROM dual";
 			 // 가입시 hp = 100, money = 0, 일한날짜 = 0 으로 초기세팅
 			
