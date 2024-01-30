@@ -114,7 +114,8 @@ public class main_윤정원 {
                   int work_opp = pdto.getWork_opp();
                   
                   while(true) {
-                	 a.bracketS(); // 대괄호
+                	 
+                	  a.bracketS(); // 대괄호
                 	 System.out.println(" ** 회사 출근! 할 일을 골라주세요 **");
                      System.out.println(" [1]일하기 [2]자기계발 [3]휴식 [4]퇴근하기");
                      a.bracketE(); // 대괄호
@@ -604,21 +605,16 @@ public class main_윤정원 {
                                                     + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp()+ "\n");
                                      break;
                                }       
-                            }
-                            if(choice == 3) { // ** 랭킹보기
-                                
-                                System.out.println("10위까지의 랭킹 출력");
-                             
-                                mdao.workerRank();
-                             }                 
-                         }
-                  	
-            
-                           
-           
-                  
+                            }         
+                  }              
             }
-      }   
+         } 
+          if(choice == 3) { // ** 랭킹보기
+                
+                System.out.println("10위까지의 랭킹 출력");
+             
+                mdao.workerRank();
+           }                      
             
       }
    }
