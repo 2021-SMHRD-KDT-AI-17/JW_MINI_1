@@ -525,11 +525,11 @@ public class main_윤정원 {
                                System.out.println(" [1]버스타기 [2]걸어가기 [3]택시타기"); // 로그인 성공 후 선택
                                int input = sc.nextInt();
                                
-                               if(input ==1) { // 버스 타기 선택시  hp -20 
+                               if(input ==1) { // 버스 타기 선택시  hp -10 
                                  
                             	  a.bus(); // 버스 이미지 
                             	   
-                            	  hp -=20;
+                            	  hp -=10;
                                   pdto.setHp(hp);
                                   
                                   sum_opp =  sum_opp-1;
@@ -544,7 +544,7 @@ public class main_윤정원 {
 
                                   pdto = wdao.overtime(pdto);
                                
-                                  System.out.println("hp -20 감소!");
+                                  System.out.println("hp -10 감소!");
                                   System.out.println("이름 : " + pdto.getId() + " \t" + "HP : "+ pdto.getHp()
                                                  + " \t"+ "Money : " +pdto.getMoney() + "\t" + "근무일수 : " + pdto.getCnt_date() + "\t " + "총 기회 : " 
                                                  + pdto.getSum_opp() + "\t" + "일할 기회 : " + pdto.getWork_opp()+ "\n");
