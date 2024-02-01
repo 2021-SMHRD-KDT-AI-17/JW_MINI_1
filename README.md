@@ -1,7 +1,7 @@
 
 # 📎 Work To Building Owner (팀명: WTBO)
 
-
+ <img src="https://www.google.com/url?sa=i&url=http%3A%2F%2Fwww.engjournal.co.kr%2Fnews%2FarticleView.html%3Fidxno%3D828&psig=AOvVaw1kWeGTBm7ThTMTkpvZOz9n&ust=1706884100879000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCODkhfesioQDFQAAAAAdAAAAABAJ"/>
 
 ## 👀 서비스 소개
 
@@ -22,8 +22,11 @@
 2. 로그인
 <br>
 2-1 일하기
+<br>
 2-2 자기계발
+<br>
 2-3 휴식
+<br>
 2-4 퇴근하기
 <br>
 4. 랭킹조회
@@ -45,7 +48,7 @@
  
   <tr>
     <td align="center">
-    	<img src="1" width="100" height="120"/>
+    	<img src="" width="100" height="120"/>
     	<img src="" width="100" height="120"/>
     </td>
     <td align="center">
