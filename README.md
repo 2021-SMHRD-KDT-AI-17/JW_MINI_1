@@ -162,9 +162,9 @@
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/JeongWon0389" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/joyeonghoon" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/wodnjs0104" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/gptjs0629" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/hayoung000" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/yunoksan" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/GO-HUI-CHEONG" target='_blank'>github</a></td>
    
   </tr>
 </table>
