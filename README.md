@@ -1,7 +1,7 @@
 
 # 📎 Work To Building Owner (팀명: WTBO)
 
- <img src=""/>
+ <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-f2fZHgQSDl_1hQfSDwtR-GdYZgyhYYWTWQ&usqp=CAU"/>
 
 ## 👀 서비스 소개
 
@@ -23,13 +23,13 @@
 <br>
 2-1 일하기
 <br>
-2-2 자기계발
+	2-2 자기계발
 <br>
-2-3 휴식
+	2-3 휴식
 <br>
-2-4 퇴근하기
+	2-4 퇴근하기
 <br>
-4. 랭킹조회
+34. 랭킹조회
 <br>	
 
 
@@ -45,21 +45,7 @@
     <td align="center"><strong>휴식</strong></td>
     <td align="center"><strong>퇴근하기</strong></td>
   </tr>
- 
-  <tr>
-    <td align="center">
-    	<img src="" width="100" height="120"/>
-    	<img src="" width="100" height="120"/>
-    </td>
-    <td align="center">
-	    <img src="" width="100" height="120"/>
-    </td>
-    <td align="center">
-	    <img src="" width="100" height="120"/>
-    </td>
-    <td align="center"><img src="" width="100" height="100"/></td>
-    <td align="center"><img src="" width="100" height="120"/></td>
-  </tr>
+
 </table>
 
 
@@ -106,12 +92,23 @@
 ## ⚙  유스케이스 다이어그램
 
 
+![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/ff41f5ad-fdf2-4d2f-a1e8-3e5289fb2abd)
 
 
 <br>
 
 ## ⚙ 테이블 명세서
-![테이블명세서](https://github.com/2021-SMHRD-KDT-AI-17/CH-MiniProject/assets/99461952/a6cba066-0b24-4563-b533-171a2a4ff119)
+
+1. Worker 테이블
+
+![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/5cd83adf-50c9-4681-ad80-ec5f4a279b54)
+
+
+<br>
+2. Worker_MoHp 테이블
+![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/eed80c34-30f2-40a4-80d2-bca24c4e3edb)
+
+
 
 
 ## 🖥 화면 구성
@@ -134,6 +131,7 @@
 <br>
 
 ### 일하기, 자기계발, 휴식, 퇴근 기능
+<br>
 1. 일하기 기능
 ![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/de1f31d8-ba8d-4cc2-acb5-5b0dd604ad0f)
 
@@ -155,11 +153,11 @@
 ## 👨‍👩‍👦‍👦 팀원 역할
 <table>
   <tr>
-    <td align="center"><img src="" width="100" height="100"/></td>
-    <td align="center"><img src="" width="100" height="110"/></td>
-    <td align="center"><img src="" width="100" height="100"/></td>
-    <td align="center"><img src="" width="100" height="100"/></td>
-    <td align="center"><img src="" width="100" height="100"/></td>
+    <td align="center"><img src="![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/b2f0b8f8-df72-4927-a2bf-d44ed019ca5a)" width="100" height="100"/></td>
+    <td align="center"><img src="![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/c1318bf7-0557-495d-ab7b-132b46c3e5d3) " width="100" height="110"/></td>
+    <td align="center"><img src="![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/6f02bff5-9c9e-48c8-980f-6785856d0b86)" width="100" height="100"/></td>
+    <td align="center"><img src="![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/20450207-b034-4976-aa65-9396c225bfbd)" width="100" height="100"/></td>
+   
   </tr>
   <tr>
     <td align="center"><strong>윤정원</strong></td>
@@ -180,7 +178,7 @@
     <td align="center"><a href="https://github.com/joyeonghoon" target='_blank'>github</a></td>
     <td align="center"><a href="https://github.com/wodnjs0104" target='_blank'>github</a></td>
     <td align="center"><a href="https://github.com/gptjs0629" target='_blank'>github</a></td>
-    <td align="center"><a href="https://github.com/vensr1" target='_blank'>github</a></td>
+   
   </tr>
 </table>
 
