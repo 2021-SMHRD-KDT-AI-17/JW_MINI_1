@@ -1,7 +1,8 @@
 
 # 📎 Work To Building Owner (팀명: WTBO)
 
- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-f2fZHgQSDl_1hQfSDwtR-GdYZgyhYYWTWQ&usqp=CAU"/>
+![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/9a27c1bc-9e69-4ad3-bc08-ccd6816e3b99)
+
 
 ## 👀 서비스 소개
 
@@ -23,35 +24,17 @@
 <br>
 2-1 일하기
 <br>
-	2-2 자기계발
+2-2 자기계발
 <br>
-	2-3 휴식
+2-3 휴식
 <br>
-	2-4 퇴근하기
+2-4 퇴근하기
 <br>
-34. 랭킹조회
+3. 랭킹조회
 <br>	
 
 
 ---
-
-### Play
--
-
-<table align = "center">
-  <tr>
-    <td align="center"><strong>일하기</strong></td>
-    <td align="center"><strong>자기계발</strong></td>
-    <td align="center"><strong>휴식</strong></td>
-    <td align="center"><strong>퇴근하기</strong></td>
-  </tr>
-
-</table>
-
-
-
-2
-<br>
 
 ## ⛏ 기술스택
 <table>
@@ -106,6 +89,7 @@
 
 <br>
 2. Worker_MoHp 테이블
+
 ![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/eed80c34-30f2-40a4-80d2-bca24c4e3edb)
 
 
@@ -133,32 +117,35 @@
 ### 일하기, 자기계발, 휴식, 퇴근 기능
 <br>
 1. 일하기 기능
+
 ![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/de1f31d8-ba8d-4cc2-acb5-5b0dd604ad0f)
 
 <br>
 2. 자기계발 기능
+
 ![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/5e1b4907-a28b-4104-b255-86179382d54b)
 
 <br>
 3. 휴식 기능
+
 ![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/90581159-233f-4d58-914e-392896e6301a)
 
 <br>
 4. 퇴근 기능
+
 ![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/666277b9-1b46-493f-b589-7d0773203136)
 
 <br>
 
+### 랭킹 조회
+
+![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/9032ec8a-4b5b-421d-8597-87543b9a8c04)
+
+
 
 ## 👨‍👩‍👦‍👦 팀원 역할
 <table>
-  <tr>
-    <td align="center"><img src="![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/b2f0b8f8-df72-4927-a2bf-d44ed019ca5a)" width="100" height="100"/></td>
-    <td align="center"><img src="![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/c1318bf7-0557-495d-ab7b-132b46c3e5d3) " width="100" height="110"/></td>
-    <td align="center"><img src="![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/6f02bff5-9c9e-48c8-980f-6785856d0b86)" width="100" height="100"/></td>
-    <td align="center"><img src="![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/20450207-b034-4976-aa65-9396c225bfbd)" width="100" height="100"/></td>
-   
-  </tr>
+ 
   <tr>
     <td align="center"><strong>윤정원</strong></td>
     <td align="center"><strong>김하영</strong></td>
