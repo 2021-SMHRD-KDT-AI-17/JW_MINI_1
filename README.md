@@ -161,7 +161,7 @@
   
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/kecaseo9" target='_blank'>github</a></td>
+    <td align="center"><a href="https://github.com/JeongWon0389" target='_blank'>github</a></td>
     <td align="center"><a href="https://github.com/joyeonghoon" target='_blank'>github</a></td>
     <td align="center"><a href="https://github.com/wodnjs0104" target='_blank'>github</a></td>
     <td align="center"><a href="https://github.com/gptjs0629" target='_blank'>github</a></td>
