@@ -1,7 +1,7 @@
 
 # 📎 Work To Building Owner (팀명: WTBO)
 
- <img src="https://www.google.com/url?sa=i&url=http%3A%2F%2Fwww.engjournal.co.kr%2Fnews%2FarticleView.html%3Fidxno%3D828&psig=AOvVaw1kWeGTBm7ThTMTkpvZOz9n&ust=1706884100879000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCODkhfesioQDFQAAAAAdAAAAABAJ"/>
+ <img src=""/>
 
 ## 👀 서비스 소개
 
@@ -118,15 +118,37 @@
 
 ### 메인 화면
 
+![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/6a6628da-62aa-4d03-8437-ee88fe245a02)
 
 <br>
 
 ### 로그인/회원가입
-![스크린샷 2024-01-31 083219](https://github.com/2021-SMHRD-KDT-AI-17/CH-MiniProject/assets/157353916/4afbbf37-7391-468d-8840-c1a31b112b5e)
+
+![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/060dc871-620e-4155-8bca-c12435fb2da4)
+
+<br> 
+
+### 
+![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/d0f45482-75c3-4349-9c0e-68464207b360)
+
 <br>
 
-### 빵빵이의 일상 생성/플레이
-![스크린샷 2024-01-31 083309](https://github.com/2021-SMHRD-KDT-AI-17/CH-MiniProject/assets/157353916/022cf2fc-1fe3-412d-85a8-fea3391ed37e)
+### 일하기, 자기계발, 휴식, 퇴근 기능
+1. 일하기 기능
+![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/de1f31d8-ba8d-4cc2-acb5-5b0dd604ad0f)
+
+<br>
+2. 자기계발 기능
+![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/5e1b4907-a28b-4104-b255-86179382d54b)
+
+<br>
+3. 휴식 기능
+![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/90581159-233f-4d58-914e-392896e6301a)
+
+<br>
+4. 퇴근 기능
+![image](https://github.com/2021-SMHRD-KDT-AI-17/JW_MINI_1/assets/157354077/666277b9-1b46-493f-b589-7d0773203136)
+
 <br>
 
 
